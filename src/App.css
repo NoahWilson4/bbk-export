@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+.order-export {
+  padding: 2rem;
+  margin: auto;
+  max-width: 55rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@media print {  
+  body {
+    font-size: 12px;
+  } 
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .no-print,
+  .no-print * {
+    display: none !important;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+section h1{
+  font-size: 2.3rem;
+}
+
+.sub-section {
+  page-break-after: always;
+}
+
+
+/* TOTALS LIST */
+.totals-list .totals-list__item,
+.totals-list .totals-list__total {
+  padding: 0.125rem 0;
+  /* border-top: 1px solid lightgray; */
+  /* margin-left: -0.5rem; */
+  /* margin-right: -0.5rem; */
+}
+
+.totals-list .totals-list__total {
+  padding-top: .5rem;
+  padding-left: 1rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.totals-list .totals-list__item .totals-list__item-title {
+  margin: 0;
+  font-weight: bold;
+  color: #444444;
+}
+
+.totals-list .totals-list__item ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.totals-list .totals-list__item li {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.totals-list .totals-list__item li .totals-list__item-quantity {
+  margin-right: 0.25rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.location-orders .location-orders__customer {
+  margin-bottom: 2rem;
+}
+
+.location-orders .location-orders__note {
+  margin-bottom: 0.5rem;
+}
+
+.location-orders .location-orders__customer-name {
+  margin-bottom: 0.5rem;
+}
+
+.location-orders .location-orders__address {
+  margin-bottom: 0.5rem;
 }
