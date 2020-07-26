@@ -4,6 +4,7 @@ import { Section } from './Section';
 import { Button } from '@material-ui/core';
 import { createLabels } from './create-labels';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
+import products from './products/index';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -29,7 +30,7 @@ export function Labels({ orders }: { orders?: Orders }) {
     setWorking(true);
 
     try {
-      const url = await createLabels(orders);
+      const url = await createLabels(orders, products);
       setPdfUrl(url);
     } catch (e) {
       console.warn(e);

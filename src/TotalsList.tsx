@@ -18,11 +18,13 @@ export function TotalsList({ orderItems }: { orderItems: OrderMenuItems }) {
 
   return (
     <div className="totals-list">
-      {Object.keys(orderItems).map((orderItemTitle: string) => {
-        const orderItem = orderItems[orderItemTitle];
+      {Object.keys(orderItems)
+        .sort()
+        .map((orderItemTitle: string) => {
+          const orderItem = orderItems[orderItemTitle];
 
-        return <TotalsListItem key={orderItem.title} orderItem={orderItem} />;
-      })}
+          return <TotalsListItem key={orderItem.title} orderItem={orderItem} />;
+        })}
       <div className="totals-list__total">{total} total</div>
     </div>
   );

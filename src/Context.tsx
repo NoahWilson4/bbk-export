@@ -53,50 +53,45 @@ export function Provider({ children }: { children: React.ReactNode }) {
   const [count, setCount] = React.useState(0);
   const [workingOrders, setWorkingOrders] = React.useState<Orders>();
 
-  const refreshOrders = React.useCallback(() => {
+  const refreshOrders = React.useCallback(async () => {
     setLoading(true);
+    setError(undefined);
 
     const badOrders = [];
+    try {
+      const res = await getExport();
 
-    getExport()
-      .then((res) => {
-        if (res.data) {
-          const orderData = res.data as FetchedOrders;
+      if (res.data) {
+        const orderData = res.data as FetchedOrders;
 
-          const filtered = orderData.orders.edges
-            .map(({ node }) => node)
-            .filter((order) => {
-              if (!isFetchedOrder(order)) {
-                badOrders.push(order);
-                return false;
-              }
+        const filtered = orderData.orders.edges
+          .map(({ node }) => node)
+          .filter((order) => {
+            if (!isFetchedOrder(order)) {
+              badOrders.push(order);
+              return false;
+            }
 
-              const status = order.displayFulfillmentStatus;
+            const status = order.displayFulfillmentStatus;
 
-              return (
-                status === 'UNFULFILLED' ||
-                status === 'PARTIALLY_FULFILLED' ||
-                status === 'OPEN'
-              );
-            });
+            return (
+              status === 'UNFULFILLED' ||
+              status === 'PARTIALLY_FULFILLED' ||
+              status === 'OPEN'
+            );
+          });
 
-          setTotal(filtered.length);
+        setTotal(filtered.length);
 
-          if (badOrders.length) {
-            setError(`There were ${badOrders.length} orders with faulty data.`);
-          }
-
-          return filtered;
-        } else if (res.errors?.length) {
-          throw res.errors;
+        if (badOrders.length) {
+          setError(`There were ${badOrders.length} orders with faulty data.`);
         }
-      })
-      .then(async (orders) => {
-        if (!orders?.length) return [];
+
+        if (!filtered?.length) return [];
 
         const combinedOrders: Orders = [];
 
-        for (const order of orders) {
+        for (const order of filtered) {
           setCount((c) => c + 1);
 
           const res = await getOrderLineItems(order.id);
@@ -126,14 +121,15 @@ export function Provider({ children }: { children: React.ReactNode }) {
 
         setOrders(combinedOrders);
         setWorkingOrders([...combinedOrders]);
-      })
-      .catch((e) => {
-        console.warn(e);
-        setError(true);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      } else if (res.errors?.length) {
+        throw res.errors;
+      }
+    } catch (e) {
+      console.warn(e);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   }, [setTotal, setCount, setOrders, setError, setLoading]);
 
   return (

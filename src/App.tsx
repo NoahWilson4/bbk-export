@@ -20,9 +20,14 @@ import { theme } from './theme';
 import { useOrders, Provider as OrderProvider } from './Context';
 import { Toolbar, AppBar } from '@material-ui/core';
 import Labels from './Labels';
+import Products from './Products';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
+    root: {
+      margin: 'auto',
+      maxWidth: '55rem',
+    },
     mr2: {
       marginRight: theme.spacing(2),
     },
@@ -50,7 +55,7 @@ export function App() {
 }
 
 function BBKExport() {
-  const { setWorkingOrders, refreshOrders, workingOrders, error } = useOrders();
+  const { setWorkingOrders, workingOrders } = useOrders();
 
   const [editing, setEditing] = React.useState(false);
   const toggleEdit = React.useCallback(() => setEditing((s) => !s), [
@@ -76,7 +81,7 @@ function BBKExport() {
   const classes = useStyles();
 
   return (
-    <div className="order-export">
+    <div className={classes.root}>
       <AppBar color="transparent" position="relative">
         <Toolbar>
           <img src="/logo.png" className={classes.logo} />
@@ -112,6 +117,7 @@ function BBKExport() {
           <Tab label="Locations" />
           <Tab label="Orders" />
           <Tab label="Labels" />
+          <Tab label="Products" />
         </Tabs>
       </Toolbar>
       {workingOrders && tab === 0 ? <Totals orders={workingOrders} /> : null}
@@ -122,6 +128,7 @@ function BBKExport() {
         <LocationOrders orders={workingOrders} />
       ) : null}
       {tab === 3 ? <Labels orders={workingOrders} /> : null}
+      {tab === 4 ? <Products /> : null}
       <Loading />
     </div>
   );
