@@ -79,10 +79,7 @@ function BBKExport() {
     <div className="order-export">
       <AppBar color="transparent" position="relative">
         <Toolbar>
-          <img
-            src="https://cdn.shopify.com/s/files/1/0094/1312/t/8/assets/logo.png?v=2859877849780081869"
-            className={classes.logo}
-          />
+          <img src="/logo.png" className={classes.logo} />
 
           {workingOrders ? (
             <>
@@ -111,10 +108,10 @@ function BBKExport() {
           centered
           className={classes.tabs}
         >
-          <Tab label="Overview" disabled={!workingOrders} />
-          <Tab label="Locations" disabled={!workingOrders} />
-          <Tab label="Orders" disabled={!workingOrders} />
-          <Tab label="Labels" disabled={!workingOrders} />
+          <Tab label="Overview" />
+          <Tab label="Locations" />
+          <Tab label="Orders" />
+          <Tab label="Labels" />
         </Tabs>
       </Toolbar>
       {workingOrders && tab === 0 ? <Totals orders={workingOrders} /> : null}
@@ -124,7 +121,7 @@ function BBKExport() {
       {workingOrders && tab === 2 ? (
         <LocationOrders orders={workingOrders} />
       ) : null}
-      {workingOrders && tab === 3 ? <Labels orders={workingOrders} /> : null}
+      {tab === 3 ? <Labels orders={workingOrders} /> : null}
       <Loading />
     </div>
   );

@@ -1,18 +1,10 @@
 import React from 'react';
 import { TotalsList } from './TotalsList';
 import { Section, SubSection } from './Section';
-import { getOrderItems, OrderMenuItems } from './utils';
+import { getOrderTotals } from './utils';
 
 export function Totals({ orders }: { orders: any }) {
-  const orderItems = React.useMemo(() => {
-    let orderItems: OrderMenuItems = {};
-
-    for (const order of orders) {
-      orderItems = getOrderItems(order, orderItems);
-    }
-
-    return orderItems;
-  }, [orders]);
+  const orderItems = React.useMemo(() => getOrderTotals(orders), [orders]);
 
   return (
     <Section className="totals" header="Totals">
