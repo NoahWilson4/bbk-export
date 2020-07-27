@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export function Labels({ orders }: { orders?: Orders }) {
+export function Labels({ orders }: { orders: Orders }) {
   const [error, setError] = React.useState<any>();
   const [working, setWorking] = React.useState(false);
   const [pdfUrl, setPdfUrl] = React.useState<string>();

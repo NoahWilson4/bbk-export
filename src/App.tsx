@@ -5,6 +5,7 @@ import { Totals } from './Totals';
 import { LocationOrders } from './LocationOrders';
 import { OrderEditModal } from './OrderEditModal';
 import { Orders } from './utils';
+import classnames from 'classnames';
 
 import Button from '@material-ui/core/Button';
 import Tabs from '@material-ui/core/Tabs';
@@ -82,7 +83,7 @@ function BBKExport() {
 
   return (
     <div className={classes.root}>
-      <AppBar color="transparent" position="relative">
+      <AppBar color="transparent" position="relative" className="no-print">
         <Toolbar>
           <img src="/logo.png" className={classes.logo} />
 
@@ -106,7 +107,7 @@ function BBKExport() {
           ) : null}
         </Toolbar>
       </AppBar>
-      <Toolbar>
+      <Toolbar className="no-print">
         <Tabs
           value={tab}
           onChange={handleChange}
@@ -127,9 +128,9 @@ function BBKExport() {
       {workingOrders && tab === 2 ? (
         <LocationOrders orders={workingOrders} />
       ) : null}
-      {tab === 3 ? <Labels orders={workingOrders} /> : null}
+      {workingOrders && tab === 3 ? <Labels orders={workingOrders} /> : null}
       {tab === 4 ? <Products /> : null}
-      <Loading />
+      {tab !== 4 ? <Loading /> : null}
     </div>
   );
 }
@@ -137,13 +138,14 @@ function BBKExport() {
 const useLoadingStyles = makeStyles((theme) =>
   createStyles({
     loading: {
-      marginTop: theme.spacing(10),
+      marginTop: theme.spacing(6),
       color: theme.palette.grey[700],
       fontSize: `1.2rem`,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
+      padding: theme.spacing(6),
     },
     progress: {
       width: '100%',
@@ -166,7 +168,7 @@ export function Loading() {
   const classes = useLoadingStyles();
 
   return (
-    <div className={classes.loading}>
+    <div className={classnames('no-print', classes.loading)}>
       {loading && typeof count !== 'number' ? (
         <>Fetching Orders...</>
       ) : loading ? (
