@@ -1,0 +1,117 @@
+{
+  "title": "Grassfed Housemade Corned Beef Hash",
+  "label": {},
+  "jar": true,
+  "recipe": {
+    "quantity": 1.5,
+    "unit": null,
+    "ingredients": [
+      {
+        "ingredient": "potatoes, gold",
+        "quantity": 1.4,
+        "unit": "lb",
+        "note": "",
+        "price": 1.5,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "yellow onion, diced",
+        "quantity": 0.5,
+        "unit": "lb",
+        "note": "",
+        "price": 1.09,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "carrots, organic",
+        "quantity": 0.4,
+        "unit": "lb",
+        "note": "",
+        "price": 0.55,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "RECIPE: Corned Beef",
+        "quantity": 0.75,
+        "unit": "lb",
+        "note": "50% yield on corned beef cooked overnight",
+        "price": null,
+        "source": "",
+        "product": true
+      },
+      {
+        "ingredient": "whole-grain mustard, Eden",
+        "quantity": 1,
+        "unit": "tbs",
+        "note": "0.5",
+        "price": 0.11,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "thyme",
+        "quantity": 0.1,
+        "unit": "oz",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "garlic, minced",
+        "quantity": 1,
+        "unit": "clove",
+        "note": "",
+        "price": 0.04,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "red wine vinegar, organic",
+        "quantity": 2,
+        "unit": "tbs",
+        "note": "",
+        "price": 0.19,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "fresh parsley",
+        "quantity": 0.06,
+        "unit": "bunch",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "olive oil",
+        "quantity": 0.3,
+        "unit": "cup",
+        "note": "",
+        "price": 0.95,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "per quart",
+        "quantity": null,
+        "unit": "",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      }
+    ],
+    "instructions": [
+      "Roast veggies (except onion) each separately.",
+      "Brown onions in rondo then add garlic, mustard, thyme and salt. Use water to scrape up any brown bits on bottom.",
+      "Mix flavored onions into roasted carrot and potato. Add red wine vinegar and salt to taste",
+      "Weigh finished beef - should be 7-8 oz per quart.  Veggies 11-12 oz.",
+      "Portion beef and veggies in a bowl.  Toss together and jar."
+    ]
+  }
+}

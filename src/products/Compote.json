@@ -1,0 +1,53 @@
+{
+  "title": "Compote",
+  "label": {},
+  "jar": false,
+  "recipe": {
+    "quantity": 1,
+    "unit": null,
+    "ingredients": [
+      {
+        "ingredient": "Compote",
+        "quantity": 1,
+        "unit": "cup",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "peach",
+        "quantity": 0.75,
+        "unit": "lb",
+        "note": "",
+        "price": 2,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "honey (to taste)",
+        "quantity": 2,
+        "unit": "oz",
+        "note": "",
+        "price": 0.19,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "lemon zest",
+        "quantity": 0.15,
+        "unit": "lemon",
+        "note": "",
+        "price": 0.5,
+        "source": "",
+        "product": false
+      }
+    ],
+    "instructions": [
+      "To make compote-",
+      "Put all ingredients in a pot and cook until liquid thickens to syrup consistency.",
+      "Blend a little if needed with immersion blender to make thick enough.",
+      "If fruits are fresh, cook until liquid comes out, then strain and cook as above or just barely cook at all!"
+    ]
+  }
+}

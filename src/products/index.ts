@@ -1,6 +1,13 @@
-import SilkyCoconutPannaCottawithPeachCompote from './Silky Coconut Panna Cotta with Peach Compote.json';
-import MustardAndRosemaryTurkeyBurgers from './Mustard and Rosemary Turkey Burgers.json';
-import GreekZucchiniAnkaraWithMeatballsAndOptionalFetaCheese from './Greek Zucchini Ankara with Meatballs and Optional Feta Cheese.json';
+const AsianStyleCodAndVegetableSoup = require('./Asian Style Cod and Vegetable Soup.json');
+const CheesyBlackBeanTamalePie = require('./Cheesy Black Bean Tamale Pie.json');
+const Compote = require('./Compote.json');
+const CornedBeef = require('./Corned Beef.json');
+const GrassfedHousemadeCornedBeefHash = require('./Grassfed Housemade Corned Beef Hash.json');
+const GreekZucchiniAnkaraWithMeatballsAndOptionalFetaCheese = require('./Greek Zucchini Ankara with Meatballs and Optional Feta Cheese.json');
+const MustardAndRosemaryTurkeyBurgers = require('./Mustard and Rosemary Turkey Burgers.json');
+const Polenta = require('./Polenta.json');
+const RedEnchiladaSauce = require('./Red Enchilada Sauce.json');
+const SilkyCoconutPannaCottawithPeachCompote = require('./Silky Coconut Panna Cotta with Peach Compote.json');
 
 export interface ProductLabel {
   title?: string;
@@ -14,8 +21,15 @@ export interface Product {
 }
 
 const products: Product[] = [
+  AsianStyleCodAndVegetableSoup,
+  CheesyBlackBeanTamalePie,
+  Compote,
+  CornedBeef,
+  GrassfedHousemadeCornedBeefHash,
   GreekZucchiniAnkaraWithMeatballsAndOptionalFetaCheese,
   MustardAndRosemaryTurkeyBurgers,
+  Polenta,
+  RedEnchiladaSauce,
   SilkyCoconutPannaCottawithPeachCompote,
 ];
 

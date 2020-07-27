@@ -1,0 +1,154 @@
+{
+  "title": "Red Enchilada Sauce",
+  "label": {},
+  "jar": false,
+  "recipe": {
+    "quantity": 4.25,
+    "unit": null,
+    "ingredients": [
+      {
+        "ingredient": "Red Chile Sauce Vegetarian",
+        "quantity": 4.25,
+        "unit": "cups",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "whole chiles",
+        "quantity": 0.8,
+        "unit": "",
+        "note": "1.5 cups sauce per tin",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "**roasted chiles--poblano/anaheim/ big jim",
+        "quantity": 0.4,
+        "unit": "lb",
+        "note": "",
+        "price": 4,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "onion, rough chop",
+        "quantity": 0.5,
+        "unit": "lb",
+        "note": "",
+        "price": 1,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "garlic, minced",
+        "quantity": 0.5,
+        "unit": "oz",
+        "note": "",
+        "price": 0.36,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "tomato",
+        "quantity": 0.7,
+        "unit": "lb",
+        "note": "",
+        "price": 2,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "**tomato, canned",
+        "quantity": 0.4,
+        "unit": "28 oz can",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "red chile, New Mexican mild (.6 tbs)",
+        "quantity": 0.1,
+        "unit": "oz",
+        "note": "",
+        "price": 0.35,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "paprika, sweet (.4 tbs)",
+        "quantity": 0.06,
+        "unit": "oz",
+        "note": "",
+        "price": 0.76,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "mexican oregano (.75 tsp)",
+        "quantity": 0.03,
+        "unit": "oz",
+        "note": "",
+        "price": 0.1,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "paprika, Smoked (.25 tsp)",
+        "quantity": 0.01,
+        "unit": "oz",
+        "note": "",
+        "price": 0.82,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "cumin, toasted and ground (.25 tsp)",
+        "quantity": 0.03,
+        "unit": "oz",
+        "note": "",
+        "price": 0.68,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "olive oil",
+        "quantity": 2,
+        "unit": "tbs",
+        "note": "",
+        "price": 0.08,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "salt",
+        "quantity": 2,
+        "unit": "tsp",
+        "note": "",
+        "price": 0.03,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "filtered water",
+        "quantity": 0.2,
+        "unit": "qt",
+        "note": "",
+        "price": 1,
+        "source": "",
+        "product": false
+      }
+    ],
+    "instructions": [
+      "Peel roasted chiles and chop.",
+      "Saute onion until translucent.",
+      "Add garlic, toasted ground cumin and Mex oregano for a minute. Add chile and tomato",
+      "Add a filtered water as needed and salt. It helps to keep on the thicker side so not too runny for delivery.",
+      "Puree with immersion blender then simmer to meld.",
+      "Taste and adjust. Add cheap olive oil and immersion blend to balance flavor and texture."
+    ]
+  }
+}

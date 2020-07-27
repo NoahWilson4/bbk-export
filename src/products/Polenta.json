@@ -1,0 +1,63 @@
+{
+  "title": "Polenta",
+  "label": {},
+  "jar": false,
+  "recipe": {
+    "quantity": 3.75,
+    "unit": null,
+    "ingredients": [
+      {
+        "ingredient": "Polenta, soft style",
+        "quantity": 3.75,
+        "unit": "cups",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "regular water",
+        "quantity": 0.5,
+        "unit": "qt",
+        "note": "",
+        "price": 0.2,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "milk",
+        "quantity": 0.5,
+        "unit": "qt",
+        "note": "1 cup polenta and 4 c water makes 4c polenta (",
+        "price": 0.44,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "polenta, dry",
+        "quantity": 0.2,
+        "unit": "lb",
+        "note": "estimating 5oz polenta per cup",
+        "price": 1.4,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "salt",
+        "quantity": 0.3,
+        "unit": "tsp",
+        "note": "",
+        "price": 0.05,
+        "source": "",
+        "product": false
+      }
+    ],
+    "instructions": [
+      "bring water and milk to a boil. Lower the heat, slowly whisk in the polenta and salt.",
+      "Cook, stirring frequently, until the polenta is soft and thick, about 20 minutes.",
+      "Use two pots if needed for quantity - too much together will not cook well, rondeax works for 3 lbs",
+      "Season with more salt as needed and adjust thickness with milk.",
+      "Use immediately. Can add more water to re-warm if needed as it thickens when cooling."
+    ]
+  }
+}

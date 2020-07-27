@@ -1,0 +1,152 @@
+{
+  "title": "Asian Style Cod and Vegetable Soup",
+  "label": {},
+  "jar": true,
+  "recipe": {
+    "quantity": 2.5,
+    "unit": null,
+    "ingredients": [
+      {
+        "ingredient": "Cod",
+        "quantity": 0.63,
+        "unit": "lb",
+        "note": "",
+        "price": 5.67,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "2 tbsp olive oil",
+        "quantity": 2,
+        "unit": "T",
+        "note": "",
+        "price": 0.14,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "cabbage, thin sliced",
+        "quantity": 0.2,
+        "unit": "lb",
+        "note": "",
+        "price": 0.3,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "radish, thin sliced",
+        "quantity": 0.2,
+        "unit": "lb",
+        "note": "",
+        "price": 0.4,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "carrot, thin sliced",
+        "quantity": 0.15,
+        "unit": "lb",
+        "note": "",
+        "price": 0.23,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "cilantro",
+        "quantity": 0.25,
+        "unit": "lb",
+        "note": "",
+        "price": 0.44,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "green onions, bias cut into 3-inch pieces",
+        "quantity": 1,
+        "unit": "bunch",
+        "note": "",
+        "price": 0.6,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "clam juice",
+        "quantity": 0.5,
+        "unit": "bottle",
+        "note": "",
+        "price": 2,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "garlic, thin sliced",
+        "quantity": 0.25,
+        "unit": "oz",
+        "note": "",
+        "price": 0.09,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "ginger, sliced",
+        "quantity": 1,
+        "unit": "oz",
+        "note": "asian greens (tatsoi, bok choy)",
+        "price": 0.19,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "ume plum vinegar",
+        "quantity": 0.5,
+        "unit": "T",
+        "note": "",
+        "price": 0.15,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "sesame oil, toasted, to taste",
+        "quantity": 0.5,
+        "unit": "tbs",
+        "note": "",
+        "price": 0.15,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "szechuan peppercorns",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "note": "",
+        "price": 0,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "filtered water",
+        "quantity": 1.8,
+        "unit": "qt",
+        "note": "",
+        "price": 2.03,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "salt",
+        "quantity": 1,
+        "unit": "tsp",
+        "note": "",
+        "price": 0,
+        "source": "",
+        "product": false
+      }
+    ],
+    "instructions": [
+      "Cut cod into large- 1.5 inch- chunks. Cook separetly with some aromatics, clam juice and water.",
+      "slice veg thinly. Cook in water and clam juice with ginger and garlic, and peppercorns. Add vinegar and seasame oil at end. Taste and add salt.",
+      "Add greens, cilantro, and green onion after soup has cooled.",
+      "Weigh, divide, then portion cod in jars, then cover with cold soup."
+    ]
+  }
+}

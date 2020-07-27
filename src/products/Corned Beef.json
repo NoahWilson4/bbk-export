@@ -1,0 +1,138 @@
+{
+  "title": "Corned Beef",
+  "label": {},
+  "jar": false,
+  "recipe": {
+    "quantity": 2.5,
+    "unit": null,
+    "ingredients": [
+      {
+        "ingredient": "beef brisket",
+        "quantity": 5,
+        "unit": "lb",
+        "note": "",
+        "price": 9,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "whole allspice berries",
+        "quantity": 1,
+        "unit": "tbs",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "whole mustard seeds (brown or yellow)",
+        "quantity": 1,
+        "unit": "tbs",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "juniper berries",
+        "quantity": 1,
+        "unit": "tsp",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "coriander seeds",
+        "quantity": 1,
+        "unit": "tbs",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "whole cloves",
+        "quantity": 1,
+        "unit": "tbs",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "whole black peppercorns",
+        "quantity": 1,
+        "unit": "tbs",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "whole cardamom pods",
+        "quantity": 9,
+        "unit": "whole",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "bay leaves, crumbled",
+        "quantity": 6,
+        "unit": "leaves",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "ground ginger",
+        "quantity": 2,
+        "unit": "tsp",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "cinnamon stick",
+        "quantity": 0.5,
+        "unit": "stick",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "water",
+        "quantity": 0.5,
+        "unit": "gallon",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "brining salt - 300 gram per gallon",
+        "quantity": 1,
+        "unit": "cup",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "packaging",
+        "quantity": null,
+        "unit": "",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      }
+    ],
+    "instructions": []
+  }
+}

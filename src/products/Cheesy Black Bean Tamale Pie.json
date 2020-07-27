@@ -1,0 +1,131 @@
+{
+  "title": "Cheesy Black Bean Tamale Pie",
+  "label": {},
+  "jar": false,
+  "recipe": {
+    "quantity": 1,
+    "unit": null,
+    "ingredients": [
+      {
+        "ingredient": "black beans, dry",
+        "quantity": 0.3,
+        "unit": "lb",
+        "note": "",
+        "price": 2,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "**black beans, cooked",
+        "quantity": 0.75,
+        "unit": "lb",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "onion, pulsed in processor",
+        "quantity": 0.25,
+        "unit": "lb",
+        "note": "",
+        "price": 1.2,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "Sweet peppers, pulsed in processor",
+        "quantity": 0.2,
+        "unit": "lb",
+        "note": "",
+        "price": 3,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "olive oil",
+        "quantity": 0.13,
+        "unit": "cup",
+        "note": "",
+        "price": 0.9,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "RECIPE: Polenta",
+        "quantity": 1.25,
+        "unit": "cups",
+        "note": "",
+        "price": 0.16,
+        "source": "",
+        "product": true
+      },
+      {
+        "ingredient": "RECIPE: Red Enchilada Sauce",
+        "quantity": 1.25,
+        "unit": "cups",
+        "note": "",
+        "price": 0.99,
+        "source": "",
+        "product": true
+      },
+      {
+        "ingredient": "**sauce to mix in bean filling",
+        "quantity": 0.25,
+        "unit": "cups",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "**sauce to top filling layer (under polenta)",
+        "quantity": 1,
+        "unit": "cups",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "cilantro",
+        "quantity": 0.13,
+        "unit": "bunch",
+        "note": "",
+        "price": 1.5,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "Tillamook yellow cheddar",
+        "quantity": 0.13,
+        "unit": "lb",
+        "note": "",
+        "price": 4,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "packaging",
+        "quantity": null,
+        "unit": "",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      }
+    ],
+    "instructions": [
+      "Pressure cook beans. Saute onions and peppers, combine. Toss with portion of sauce (listed in ingredients)",
+      "shred cheddar",
+      "Make polenta in rondeaux for most surface area when ready to finish the tamale pies, a soft polenta.",
+      "Keep warm for portioning so it spreads smoothly.",
+      "Put 14 oz bean filling mixture in bottom of tins.",
+      "top with rest of sauce",
+      "spread polenta over top - heaping 1 cup, scrape out and spread immediately with spatula",
+      "top with 2 ounces shredded cheddar and 1 ounce queso fresco.",
+      "Bake at 375 til cheese is melted and edges golden and the liquid has been bubbling enough to reduce, about 15 to 20 min.",
+      "Cool and lid."
+    ]
+  }
+}

@@ -1,4 +1,92 @@
 {
   "title": "Silky Coconut Panna Cotta with Peach Compote",
-  "recipe": {}
+  "label": {},
+  "jar": true,
+  "recipe": {
+    "quantity": 6,
+    "unit": null,
+    "ingredients": [
+      {
+        "ingredient": "4 cups full fat coconut milk- divided (Natural Value)",
+        "quantity": 32,
+        "unit": "oz",
+        "note": "the last batch used the simple coconut milk and it separated.",
+        "price": 0.22,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "**coconut milk, cans",
+        "quantity": 2.37,
+        "unit": "13.5 oz cans",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "***4 cups coconut milk- measure",
+        "quantity": 4,
+        "unit": "cups",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "***1 cup to sit with gelatin",
+        "quantity": 1,
+        "unit": "cups",
+        "note": "",
+        "price": null,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "1 tablespoon unflavored gelatin (.25 oz)",
+        "quantity": 1,
+        "unit": "tbs",
+        "note": "",
+        "price": 0.16,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "raw honey",
+        "quantity": 4,
+        "unit": "oz",
+        "note": "",
+        "price": 0.19,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "vanilla extract",
+        "quantity": 2,
+        "unit": "tsp",
+        "note": "",
+        "price": 0.06,
+        "source": "",
+        "product": false
+      },
+      {
+        "ingredient": "RECIPE: Compote",
+        "quantity": 1.5,
+        "unit": "cups",
+        "note": "",
+        "price": 1.96,
+        "source": "",
+        "product": true
+      }
+    ],
+    "instructions": [
+      "Open coconut milk cans and blend all coconut milk with immersion blender (the Natural Value coconut separates otherwise).",
+      "Pour one quarter of total volume of coconut milk into a medium saucepan and sprinkle evenly with the gelatin.",
+      "Let the milk sit for 5-10 minutes to allow the gelatin to soften.",
+      "Heat the milk and gelatin over medium heat, stirring constantly, until gelatin is dissolved and milk begins to steam.",
+      "Stir the remaining coconut milk and honey into the warm milk and whisk until all the ingredients are dissolved.",
+      "Remove the pan from the heat and stir in the vanilla. Let the mixture cool for 10 minutes or so before jarring.",
+      "Pour into half pint mason jars, filling 3/4 of the way full, leaving room for aout 3 tbs to .25 cup compote"
+    ]
+  }
 }
