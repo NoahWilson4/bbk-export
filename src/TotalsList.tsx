@@ -25,7 +25,7 @@ export function TotalsList({ orderItems }: { orderItems: OrderMenuItems }) {
 
           return <TotalsListItem key={orderItem.title} orderItem={orderItem} />;
         })}
-      <div className="totals-list__total">{total} total</div>
+      <div className="totals-list__total">Total items: {total}</div>
     </div>
   );
 }

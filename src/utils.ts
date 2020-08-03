@@ -42,18 +42,17 @@ export function isShippingAddress(data: any): data is ShippingAddress {
 
 export interface OrderItemDetails {
   quantity: number;
-  name: string;
   title: string;
   variantTitle: string;
   fulfillableQuantity: number;
   nonFulfillableQuantity: number;
+  errors?: string[];
 }
 
 export function isOrderItemDetails(data: any): data is OrderItemDetails {
   return (
     data &&
     typeof data === 'object' &&
-    data.name &&
     data.title &&
     data.variantTitle &&
     typeof data.quantity === 'number' &&
@@ -84,6 +83,55 @@ export function isOrder(data: any): data is Order {
     data.tags &&
     data.items
   );
+}
+
+export type ValidationErrors = Array<{ order: any; item?: any; error: string }>;
+
+export function validateOrders(
+  data: any
+): { isValid: boolean; errors: ValidationErrors } {
+  let isValid = true;
+  const errors: ValidationErrors = [];
+
+  if (!data || !Array.isArray(data)) {
+    return {
+      isValid: false,
+      errors: [{ order: undefined, error: 'Expecting an array of orders.' }],
+    };
+  }
+
+  for (const order of data) {
+    if (!isOrder(order)) {
+      isValid = false;
+
+      errors.push({
+        order,
+        error: 'Invalid order data.',
+      });
+    } else {
+      for (const item of order.items) {
+        if (!isOrderItemDetails(item)) {
+          isValid = false;
+          errors.push({ order, item, error: 'Invalid order item.' });
+        } else {
+          if (item.fulfillableQuantity > item.quantity) {
+            isValid = false;
+
+            errors.push({
+              order,
+              item,
+              error: `The fulfillable quantity of ${item.fulfillableQuantity} is greater than the actual quantity of ${item.quantity}.`,
+            });
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    isValid,
+    errors,
+  };
 }
 
 export interface OrderMenuItemVariant {

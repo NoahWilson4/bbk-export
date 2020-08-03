@@ -5,14 +5,15 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
-import { Orders, isOrders } from './utils';
+import { Orders, ValidationErrors, validateOrders } from './utils';
 
 import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { ValidationErrorAlerts } from './ValidationErrors';
 
 export interface OrderEditModalProps {
   open: boolean;
   onClose: () => any;
-  orders: Orders;
+  orders?: Orders;
   onSave: (value: Orders) => any;
 }
 
@@ -20,6 +21,9 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     textarea: {
       fontSize: '0.85rem',
+    },
+    errorData: {
+      wordWrap: 'break-word',
     },
   })
 );
@@ -32,12 +36,15 @@ export function OrderEditModal({
 }: OrderEditModalProps) {
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
   const [error, setError] = React.useState<any>();
+  const [validationError, setValidationError] = React.useState<
+    ValidationErrors
+  >();
 
   const initialInputText = React.useMemo(() => {
     setError(undefined);
 
     try {
-      const str = JSON.stringify(orders, undefined, 2);
+      const str = orders ? JSON.stringify(orders, undefined, 2) : '';
       return str;
     } catch (e) {
       setError(e);
@@ -47,21 +54,26 @@ export function OrderEditModal({
 
   const _onSave = React.useCallback(() => {
     setError(undefined);
+    setValidationError(undefined);
     const val = inputRef.current?.value || '';
 
     try {
       const newData = JSON.parse(val);
-      if (!isOrders(newData)) {
+      const { isValid, errors } = validateOrders(newData);
+
+      if (!isValid) {
         setError('Invalid data has been provided.');
+        setValidationError(errors);
         return;
       }
+
       onSave(newData);
       onClose();
     } catch (e) {
       console.warn(e);
       setError('Invalid JSON');
     }
-  }, [onClose, inputRef, onSave]);
+  }, [onClose, inputRef, onSave, setValidationError, setError]);
 
   const classes = useStyles();
 
@@ -74,6 +86,7 @@ export function OrderEditModal({
     >
       <DialogTitle id="form-dialog-title">Edit Orders</DialogTitle>
       <DialogContent>
+        <ValidationErrorAlerts validationErrors={validationError} />
         <TextField
           inputProps={{
             ref: inputRef,

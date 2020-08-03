@@ -66,12 +66,13 @@ function drawLabel(
   row: number,
   column: number,
   item: { title: string; variant: string; instructions?: string },
+  nextTuesday?: DateTime,
   imageBlob?: ArrayBuffer
 ) {
   const x = getLabelX(column);
   const y = getLabelY(row);
 
-  // doc.roundedRect(x, y, LABEL_WIDTH, LABEL_HEIGHT, 5).stroke();
+  doc.roundedRect(x, y, LABEL_WIDTH, LABEL_HEIGHT, 5).stroke();
   doc.image(
     imageBlob,
     x + LABEL_PADDING, // + LABEL_WIDTH * 0.75,
@@ -84,6 +85,7 @@ function drawLabel(
   const titleFontSize = 11;
   const instructionsFontSize = 9;
   const urlFontSize = 7;
+  const dateFontSize = 9;
 
   doc
     .fontSize(titleFontSize)
@@ -124,6 +126,45 @@ function drawLabel(
         align: 'center',
       }
     );
+
+  const nextTuesdayString = nextTuesday?.toLocaleString(DateTime.DATE_SHORT);
+
+  if (nextTuesdayString) {
+    doc
+      .fontSize(dateFontSize)
+      .font('Helvetica')
+      .text(
+        nextTuesdayString,
+        x + LABEL_PADDING,
+        y + LABEL_HEIGHT - LABEL_PADDING - dateFontSize,
+        {
+          width: LABEL_WIDTH - LABEL_PADDING * 2,
+          align: 'right',
+        }
+      );
+  }
+}
+
+function getNextTuesday(date: DateTime) {
+  let count = 0;
+  let tuesday: DateTime | undefined;
+  let nextDate = date;
+
+  while (!tuesday) {
+    if (count > 7) break;
+
+    if (nextDate.toFormat('cccc') === 'Tuesday') {
+      tuesday = nextDate;
+    }
+
+    nextDate = nextDate.plus({
+      day: 1,
+    });
+
+    count++;
+  }
+
+  return tuesday;
 }
 
 export async function createLabels(
@@ -135,13 +176,14 @@ export async function createLabels(
   return new Promise((resolve, reject) => {
     const menuItems = getOrderTotals(orders);
 
-    const now = DateTime.fromMillis(Date.now()).toLocaleString(
-      DateTime.DATETIME_SHORT
-    );
+    const now = DateTime.fromMillis(Date.now());
+    const nextTuesday = getNextTuesday(now);
 
     const doc = new PDFDocument({
       info: {
-        Title: `BBK Order Export ${now}`,
+        Title: `BBK Order Export ${now.toLocaleString(
+          DateTime.DATETIME_SHORT
+        )}`,
         Author: 'Back to Basics Kitchen',
       },
       layout: 'portrait',
@@ -151,7 +193,7 @@ export async function createLabels(
 
     let labelCount = 0;
 
-    for (const title of Object.keys(menuItems)) {
+    for (const title of Object.keys(menuItems).sort()) {
       const { variants } = menuItems[title];
 
       const product = products.find((p) => p.title === title);
@@ -169,6 +211,7 @@ export async function createLabels(
               variant: variantTitle,
               instructions: product?.label?.instructions,
             },
+            nextTuesday,
             imageBlob
           );
 
@@ -199,7 +242,7 @@ export async function createLabels(
   });
 }
 
-// const _orders: Orders = [
+// const _orders = [
 //   {
 //     id: 'gid://shopify/Order/2521316196440',
 //     note: '',
@@ -239,6 +282,48 @@ export async function createLabels(
 //       },
 //     ],
 //   },
+// ];
+
+// const _orders: Orders = [
+// {
+//   id: 'gid://shopify/Order/2521316196440',
+//   note: '',
+//   shippingAddress: {
+//     name: 'Carole Almond',
+//     address1: '1480 W Midway Blvd',
+//     address2: '',
+//     city: 'Broomfield',
+//     zip: '80020',
+//     phone: '(303) 862-4975',
+//   },
+//   tags: ['Broomfield Store Pick Up'],
+//   items: [
+//     {
+//       quantity: 1,
+//       name: 'Silky Coconut Panna Cotta with Peach Compote - Half Pint',
+//       title: 'Silky Coconut Panna Cotta with Peach Compote',
+//       variantTitle: 'Half Pint',
+//       fulfillableQuantity: 1,
+//       nonFulfillableQuantity: 0,
+//     },
+//     {
+//       quantity: 1,
+//       name: 'Nourishing Blueberry Lemon Granola (Paleo) - Snack / Paleo',
+//       title: 'Nourishing Blueberry Lemon Granola (Paleo)',
+//       variantTitle: 'Snack / Paleo',
+//       fulfillableQuantity: 1,
+//       nonFulfillableQuantity: 0,
+//     },
+//     {
+//       quantity: 1,
+//       name: 'Grassfed Housemade Corned Beef Hash - Pint',
+//       title: 'Grassfed Housemade Corned Beef Hash',
+//       variantTitle: 'Pint',
+//       fulfillableQuantity: 1,
+//       nonFulfillableQuantity: 0,
+//     },
+//   ],
+// },
 //   {
 //     id: 'gid://shopify/Order/2521292570712',
 //     note: '',

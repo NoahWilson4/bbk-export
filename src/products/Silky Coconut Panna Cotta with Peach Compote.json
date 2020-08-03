@@ -1,6 +1,8 @@
 {
   "title": "Silky Coconut Panna Cotta with Peach Compote",
-  "label": {},
+  "label": {
+    "instructions": "Best enjoyed within 3 days or freeze."
+  },
   "jar": true,
   "recipe": {
     "quantity": 6,

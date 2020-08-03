@@ -1,6 +1,8 @@
 {
   "title": "Grassfed Housemade Corned Beef Hash",
-  "label": {},
+  "label": {
+    "instructions": "Heat in an oiled skillet over medium, stirring."
+  },
   "jar": true,
   "recipe": {
     "quantity": 1.5,

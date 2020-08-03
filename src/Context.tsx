@@ -7,6 +7,8 @@ import {
   Order,
   FetchedLineItems,
   OrderItemDetails,
+  ValidationErrors,
+  validateOrders,
 } from './utils';
 
 async function getExport() {
@@ -29,9 +31,10 @@ export interface Value {
   workingOrders?: Orders;
   setWorkingOrders: (value: Orders) => any;
   loading?: boolean;
-  error?: any;
+  errors?: string[];
   count?: number;
   total?: number;
+  validationErrors?: ValidationErrors;
 }
 
 const Context = React.createContext<Value>({
@@ -47,15 +50,19 @@ export function useOrders() {
 
 export function Provider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState<any>();
+  const [error, setErrors] = React.useState<any[]>();
   const [orders, setOrders] = React.useState<Orders>();
   const [total, setTotal] = React.useState(0);
   const [count, setCount] = React.useState(0);
   const [workingOrders, setWorkingOrders] = React.useState<Orders>();
+  const [validationErrors, setValidationErrors] = React.useState<
+    ValidationErrors
+  >();
 
   const refreshOrders = React.useCallback(async () => {
+    setValidationErrors(undefined);
     setLoading(true);
-    setError(undefined);
+    setErrors(undefined);
 
     const badOrders = [];
     try {
@@ -84,7 +91,15 @@ export function Provider({ children }: { children: React.ReactNode }) {
         setTotal(filtered.length);
 
         if (badOrders.length) {
-          setError(`There were ${badOrders.length} orders with faulty data.`);
+          setErrors((state) => {
+            const _errors = [...(state || [])];
+
+            _errors.push(
+              `There were ${badOrders.length} orders with faulty data.`
+            );
+
+            return _errors;
+          });
         }
 
         if (!filtered?.length) return [];
@@ -108,7 +123,23 @@ export function Provider({ children }: { children: React.ReactNode }) {
               continue;
             }
 
-            items.push(node);
+            const orderDetails: OrderItemDetails = {
+              ...node,
+            };
+
+            const orderErrors: string[] = [];
+
+            if (orderDetails.fulfillableQuantity > orderDetails.quantity) {
+              orderErrors.push(
+                `This order item's fulfillable quantity of ${orderDetails.fulfillableQuantity} is greater than the order's quantity of ${orderDetails.quantity}: ${orderDetails.title}`
+              );
+            }
+
+            if (orderErrors.length) {
+              orderDetails.errors = orderErrors;
+            }
+
+            items.push(orderDetails);
           }
 
           const _order: Order = {
@@ -119,6 +150,11 @@ export function Provider({ children }: { children: React.ReactNode }) {
           combinedOrders.push(_order);
         }
 
+        const { errors } = validateOrders(combinedOrders);
+        if (errors?.length) {
+          setValidationErrors(errors);
+        }
+
         setOrders(combinedOrders);
         setWorkingOrders([...combinedOrders]);
       } else if (res.errors?.length) {
@@ -126,11 +162,18 @@ export function Provider({ children }: { children: React.ReactNode }) {
       }
     } catch (e) {
       console.warn(e);
-      setError(true);
+      setErrors(e);
     } finally {
       setLoading(false);
     }
-  }, [setTotal, setCount, setOrders, setError, setLoading]);
+  }, [
+    setTotal,
+    setCount,
+    setOrders,
+    setErrors,
+    setLoading,
+    setValidationErrors,
+  ]);
 
   return (
     <Context.Provider
@@ -140,9 +183,10 @@ export function Provider({ children }: { children: React.ReactNode }) {
         refreshOrders,
         setWorkingOrders,
         loading,
-        error,
+        errors: error,
         total,
         count,
+        validationErrors,
       }}
     >
       {children}

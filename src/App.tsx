@@ -87,7 +87,7 @@ function BBKExport() {
         <Toolbar>
           <img src="/logo.png" className={classes.logo} />
 
-          {workingOrders ? (
+          {true || workingOrders ? (
             <>
               <Button
                 onClick={toggleEdit}
@@ -162,7 +162,7 @@ export function Loading() {
     total,
     workingOrders,
     refreshOrders,
-    error,
+    errors,
   } = useOrders();
 
   const classes = useLoadingStyles();
@@ -179,7 +179,7 @@ export function Loading() {
         <Button onClick={refreshOrders} color="secondary" variant="contained">
           Run Export
         </Button>
-      ) : error ? (
+      ) : errors ? (
         <div>There was an error fetching orders.</div>
       ) : null}
       {loading ? (
