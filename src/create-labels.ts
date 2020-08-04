@@ -1,8 +1,17 @@
 import _PDFDoc from 'pdfkit';
-import { Orders, getOrderTotals } from './utils';
+import {
+  Orders,
+  getOrderTotals,
+  getOrdersByLocation,
+  CustomerOrder,
+} from './utils';
 import blobStream from 'blob-stream';
 import { DateTime } from 'luxon';
-import { Product, instructionDefaults } from './products/index';
+import {
+  Product,
+  instructionDefaults,
+  ProductLabelInstructions,
+} from './products/index';
 import radish from './radish-opaque.png';
 
 const PDFDocument: typeof _PDFDoc = (window as any).PDFDocument;
@@ -61,18 +70,24 @@ async function getImageDataUri(path: string): Promise<ArrayBuffer | undefined> {
   }
 }
 
-function drawLabel(
+function drawItemLabel(
   doc: typeof _PDFDoc,
   row: number,
   column: number,
-  item: { title: string; variant: string; instructions?: string },
+  item: {
+    title: string;
+    variant: string;
+    instructions?: ProductLabelInstructions;
+  },
   nextTuesday?: DateTime,
   imageBlob?: ArrayBuffer
 ) {
   const x = getLabelX(column);
   const y = getLabelY(row);
 
-  doc.roundedRect(x, y, LABEL_WIDTH, LABEL_HEIGHT, 5).stroke();
+  // this draws lines that mimic where the labels are cut
+  // doc.roundedRect(x, y, LABEL_WIDTH, LABEL_HEIGHT, 5).stroke();
+
   doc.image(
     imageBlob,
     x + LABEL_PADDING, // + LABEL_WIDTH * 0.75,
@@ -100,12 +115,16 @@ function drawLabel(
       }
     );
 
+  const itemInstructions = item.instructions
+    ? item.instructions[item.variant] || item.instructions['default']
+    : undefined;
+
   doc
     .lineGap(0)
     .fontSize(instructionsFontSize)
     .font('Helvetica')
     .text(
-      item.instructions ||
+      itemInstructions ||
         instructionDefaults[item.variant] ||
         instructionDefaults.default,
       {
@@ -138,7 +157,131 @@ function drawLabel(
         x + LABEL_PADDING,
         y + LABEL_HEIGHT - LABEL_PADDING - dateFontSize,
         {
+          width: LABEL_WIDTH - LABEL_PADDING * 2 - 10,
+          align: 'right',
+        }
+      );
+  }
+}
+
+function drawCustomerLabel(
+  doc: typeof _PDFDoc,
+  row: number,
+  column: number,
+  location: string,
+  order: CustomerOrder,
+  nextTuesday?: DateTime,
+  imageBlob?: ArrayBuffer
+) {
+  const x = getLabelX(column);
+  const y = getLabelY(row);
+
+  // this draws lines that mimic where the labels are cut
+  // doc.roundedRect(x, y, LABEL_WIDTH, LABEL_HEIGHT, 5).stroke();
+
+  doc.image(
+    imageBlob,
+    x + LABEL_PADDING, // + LABEL_WIDTH * 0.75,
+    y + LABEL_PADDING + LABEL_HEIGHT / 3.75,
+    {
+      width: LABEL_WIDTH / 5,
+    }
+  );
+
+  const titleFontSize = 10;
+  const addressFontSize = 7;
+  const urlFontSize = 7;
+  const dateFontSize = 8;
+  const locationFontSize = 7;
+
+  doc
+    .fontSize(titleFontSize)
+    .font('Helvetica-Bold')
+    .text(`${order.shipping.name}`, x + LABEL_PADDING, y + LABEL_PADDING, {
+      width: LABEL_WIDTH - LABEL_PADDING * 2,
+      align: 'center',
+    });
+
+  if (location.toLowerCase().includes('delivery')) {
+    if (order.shipping.address1) {
+      doc
+        .lineGap(0)
+        .fontSize(addressFontSize)
+        .font('Helvetica')
+        .text(order.shipping.address1, {
           width: LABEL_WIDTH - LABEL_PADDING * 2,
+          align: 'center',
+        });
+    }
+
+    if (order.shipping.address2) {
+      doc
+        .lineGap(0)
+        .fontSize(addressFontSize)
+        .font('Helvetica')
+        .text(order.shipping.address2, {
+          width: LABEL_WIDTH - LABEL_PADDING * 2,
+          align: 'center',
+        });
+    }
+
+    if (order.shipping.zip) {
+      doc
+        .lineGap(0)
+        .fontSize(addressFontSize)
+        .font('Helvetica')
+        .text(`${order.shipping.city}, ${order.shipping.zip}`, {
+          width: LABEL_WIDTH - LABEL_PADDING * 2,
+          align: 'center',
+        });
+    }
+
+    if (order.shipping.phone) {
+      doc
+        .lineGap(0)
+        .fontSize(addressFontSize)
+        .font('Helvetica')
+        .text(order.shipping.phone, {
+          width: LABEL_WIDTH - LABEL_PADDING * 2,
+          align: 'center',
+        });
+    }
+  }
+
+  doc
+    .lineGap(0)
+    .fontSize(locationFontSize)
+    .font('Helvetica')
+    .text(location, {
+      width: LABEL_WIDTH - LABEL_PADDING * 2,
+      align: 'center',
+    });
+
+  doc
+    .fontSize(urlFontSize)
+    .font('Helvetica')
+    .text(
+      'backtobasicskitchen.com',
+      x + LABEL_PADDING,
+      y + LABEL_HEIGHT - LABEL_PADDING - urlFontSize,
+      {
+        width: LABEL_WIDTH - LABEL_PADDING * 2,
+        align: 'center',
+      }
+    );
+
+  const nextTuesdayString = nextTuesday?.toLocaleString(DateTime.DATE_SHORT);
+
+  if (nextTuesdayString) {
+    doc
+      .fontSize(dateFontSize)
+      .font('Helvetica')
+      .text(
+        nextTuesdayString,
+        x + LABEL_PADDING,
+        y + LABEL_HEIGHT - LABEL_PADDING - dateFontSize,
+        {
+          width: LABEL_WIDTH - LABEL_PADDING * 2 - 10,
           align: 'right',
         }
       );
@@ -174,8 +317,6 @@ export async function createLabels(
   const imageBlob = await getImageDataUri(radish);
 
   return new Promise((resolve, reject) => {
-    const menuItems = getOrderTotals(orders);
-
     const now = DateTime.fromMillis(Date.now());
     const nextTuesday = getNextTuesday(now);
 
@@ -189,9 +330,12 @@ export async function createLabels(
       layout: 'portrait',
       margins: DEFAULT_MARGINS,
     });
+
     const stream = doc.pipe(blobStream());
 
     let labelCount = 0;
+
+    const menuItems = getOrderTotals(orders);
 
     for (const title of Object.keys(menuItems).sort()) {
       const { variants } = menuItems[title];
@@ -202,7 +346,7 @@ export async function createLabels(
         const { quantity } = variants[variantTitle];
 
         for (let i = quantity; i > 0; i--) {
-          drawLabel(
+          drawItemLabel(
             doc,
             getLabelRow(labelCount),
             getLabelColumn(labelCount),
@@ -221,6 +365,33 @@ export async function createLabels(
             labelCount = 0;
             doc.addPage();
           }
+        }
+      }
+    }
+
+    const ordersByLocation = getOrdersByLocation(orders);
+
+    for (const locationTitle of Object.keys(ordersByLocation).sort()) {
+      const location = ordersByLocation[locationTitle];
+
+      for (const customerName of Object.keys(location).sort()) {
+        const customerOrder = location[customerName];
+
+        drawCustomerLabel(
+          doc,
+          getLabelRow(labelCount),
+          getLabelColumn(labelCount),
+          locationTitle,
+          customerOrder,
+          nextTuesday,
+          imageBlob
+        );
+
+        labelCount++;
+
+        if (labelCount >= LABEL_COLUMN_COUNT * LABEL_ROW_COUNT) {
+          labelCount = 0;
+          doc.addPage();
         }
       }
     }

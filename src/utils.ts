@@ -182,3 +182,43 @@ export function getOrderTotals(orders: Orders) {
 
   return orderItems;
 }
+
+export interface CustomerOrder {
+  items: OrderMenuItems;
+  shipping: ShippingAddress;
+  note?: string;
+}
+
+export interface LocationOrder {
+  [key: string]: CustomerOrder;
+}
+
+export interface LocationOrders {
+  [key: string]: LocationOrder;
+}
+
+export function getOrdersByLocation(orders: Orders) {
+  const _locationOrders: LocationOrders = {};
+
+  for (const order of orders) {
+    const locationName = order.tags[0];
+    if (!locationName) continue;
+
+    const name = order.shippingAddress.name as string;
+
+    const locationData = _locationOrders[locationName] || {};
+    const customerData: CustomerOrder = locationData[name] || {
+      shipping: order.shippingAddress,
+      items: {},
+      note: order.note,
+    };
+
+    customerData.items = getOrderItems(order, customerData.items);
+    customerData.shipping = order.shippingAddress;
+
+    locationData[name] = customerData;
+    _locationOrders[locationName] = locationData;
+  }
+
+  return _locationOrders;
+}

@@ -1,17 +1,20 @@
 const AsianStyleCodAndVegetableSoup = require('./Asian Style Cod and Vegetable Soup.json');
 const CheesyBlackBeanTamalePie = require('./Cheesy Black Bean Tamale Pie.json');
+const CabbageSlawLime = require('./Crisp Cabbage Slaw with Lime Cumin Vinaigrette.json');
 const Compote = require('./Compote.json');
 const CornedBeef = require('./Corned Beef.json');
+const FreshBeetandCarrotSalad = require('./Fresh Beet and Carrot Salad');
 const GrassfedHousemadeCornedBeefHash = require('./Grassfed Housemade Corned Beef Hash.json');
 const GreekZucchiniAnkaraWithMeatballsAndOptionalFetaCheese = require('./Greek Zucchini Ankara with Meatballs and Optional Feta Cheese.json');
+const ItalianSauteedSweetPepperSkillet = require('./Italian Sauteed Sweet Pepper Skillet (Optional Chicken Sausage).json');
 const MustardAndRosemaryTurkeyBurgers = require('./Mustard and Rosemary Turkey Burgers.json');
-const Polenta = require('./Polenta.json');
-const RedEnchiladaSauce = require('./Red Enchilada Sauce.json');
-const SilkyCoconutPannaCottawithPeachCompote = require('./Silky Coconut Panna Cotta with Peach Compote.json');
-const CabbageSlawLime = require('./Crisp Cabbage Slaw with Lime Cumin Vinaigrette.json');
 const NourishingBlueberryLemonGranolaPaleo = require('./Nourishing Blueberry Lemon Granola (Paleo).json');
+const Polenta = require('./Polenta.json');
 const PurityOrganicCoffeeToxinFree = require('./Purity Organic Coffee (Toxin Free).json');
+const RedEnchiladaSauce = require('./Red Enchilada Sauce.json');
 const SanctuaryHoneyChaiConcentrate = require('./Sanctuary Honey Chai Concentrate.json');
+const SilkyCoconutPannaCottawithPeachCompote = require('./Silky Coconut Panna Cotta with Peach Compote.json');
+const TheBestTunaSaladwithPicklesandDill = require('./The Best Tuna Salad with Pickles and Dill.json');
 
 const products: Product[] = [
   AsianStyleCodAndVegetableSoup,
@@ -19,8 +22,10 @@ const products: Product[] = [
   CheesyBlackBeanTamalePie,
   Compote,
   CornedBeef,
+  FreshBeetandCarrotSalad,
   GrassfedHousemadeCornedBeefHash,
   GreekZucchiniAnkaraWithMeatballsAndOptionalFetaCheese,
+  ItalianSauteedSweetPepperSkillet,
   MustardAndRosemaryTurkeyBurgers,
   NourishingBlueberryLemonGranolaPaleo,
   Polenta,
@@ -28,6 +33,7 @@ const products: Product[] = [
   RedEnchiladaSauce,
   SanctuaryHoneyChaiConcentrate,
   SilkyCoconutPannaCottawithPeachCompote,
+  TheBestTunaSaladwithPicklesandDill,
 ];
 
 export const instructionDefaults: { [key: string]: string } = {
@@ -45,15 +51,23 @@ export const instructionDefaults: { [key: string]: string } = {
   'Frozen 24oz':
     'Defrost or run under warm water. Slide out. Heat gently in a saucepan and enjoy.',
   'Four Burgers': 'Heat in an oiled skillet or heat at 350 in the oven.',
+  '4 Burgers': 'Heat in an oiled skillet or heat at 350 in the oven.',
   'Frozen Pint / Feta':
     'Defrost or run under warm water. Slide out. Heat gently in a saucepan and enjoy.',
   'Frozen CHICKEN':
     'Defrost or run under warm water & slide out. Heat gently in a saucepan.',
+  'Frozen Burgers 4-Pack': 'Defrost and heat in an oiled skillet.',
+  'Frozen Four Burgers': 'Defrost and heat in an oiled skillet.',
 };
+
+export interface ProductLabelInstructions {
+  [key: string]: string | undefined;
+  default: string | undefined;
+}
 
 export interface ProductLabel {
   title?: string;
-  instructions?: string;
+  instructions?: ProductLabelInstructions;
 }
 
 export interface Product {

@@ -1,52 +1,11 @@
 import React from 'react';
 import { TotalsList } from './TotalsList';
 import { Section, SubSection } from './Section';
-import {
-  getOrderItems,
-  OrderMenuItems,
-  ShippingAddress,
-  Orders,
-} from './utils';
-
-interface CustomerOrder {
-  items: OrderMenuItems;
-  shipping: ShippingAddress;
-  note?: string;
-}
-
-interface LocationOrder {
-  [key: string]: CustomerOrder;
-}
-
-interface LocationOrders {
-  [key: string]: LocationOrder;
-}
+import { Orders, getOrdersByLocation } from './utils';
 
 export function LocationOrders({ orders }: { orders: Orders }) {
   const locationOrders = React.useMemo(() => {
-    const _locationOrders: LocationOrders = {};
-
-    for (const order of orders) {
-      const locationName = order.tags[0];
-      if (!locationName) continue;
-
-      const name = order.shippingAddress.name as string;
-
-      const locationData = _locationOrders[locationName] || {};
-      const customerData: CustomerOrder = locationData[name] || {
-        shipping: order.shippingAddress,
-        items: {},
-        note: order.note,
-      };
-
-      customerData.items = getOrderItems(order, customerData.items);
-      customerData.shipping = order.shippingAddress;
-
-      locationData[name] = customerData;
-      _locationOrders[locationName] = locationData;
-    }
-
-    return _locationOrders;
+    return getOrdersByLocation(orders);
   }, [orders]);
 
   return (
