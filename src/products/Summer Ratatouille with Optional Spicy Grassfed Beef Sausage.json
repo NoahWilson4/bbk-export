@@ -1,0 +1,10 @@
+{
+  "title": "Summer Ratatouille with Optional Spicy Grassfed Beef Sausage",
+  "label": {
+    "title": "Summer Ratatouille",
+    "instructions": {
+      "default": "Heat gently in a skillet, stirring occasionally.",
+      "Frozen Pint": "Defrost. Heat gently in a skillet, stirring occasionally."
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Orders } from './utils';
 import { Section } from './Section';
 import { Button } from '@material-ui/core';
-import { createLabels } from './create-labels';
+import { createLabels } from './labels/index';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import products from './products/index';
 

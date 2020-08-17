@@ -9,6 +9,7 @@ import {
   OrderItemDetails,
   ValidationErrors,
   validateOrders,
+  FetchedOrder,
 } from './utils';
 
 async function getExport() {
@@ -64,7 +65,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
     setLoading(true);
     setErrors(undefined);
 
-    const badOrders = [];
+    const badOrders: FetchedOrder[] = [];
     try {
       const res = await getExport();
 
@@ -97,6 +98,18 @@ export function Provider({ children }: { children: React.ReactNode }) {
             _errors.push(
               `There were ${badOrders.length} orders with faulty data.`
             );
+
+            for (const badOrder of badOrders) {
+              _errors.push(
+                <>
+                  <div>
+                    <strong>Order with Error: </strong>
+                    {badOrder.id}
+                  </div>
+                  <div>{JSON.stringify(badOrder)}</div>
+                </>
+              );
+            }
 
             return _errors;
           });

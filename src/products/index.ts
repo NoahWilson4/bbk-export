@@ -1,9 +1,11 @@
 const AsianStyleCodAndVegetableSoup = require('./Asian Style Cod and Vegetable Soup.json');
 const CheesyBlackBeanTamalePie = require('./Cheesy Black Bean Tamale Pie.json');
 const CabbageSlawLime = require('./Crisp Cabbage Slaw with Lime Cumin Vinaigrette.json');
+const CaramelizedOnionandWhiteBeanDip = require('./Caramelized Onion and White Bean Dip.json');
 const Compote = require('./Compote.json');
 const CornedBeef = require('./Corned Beef.json');
 const FreshBeetandCarrotSalad = require('./Fresh Beet and Carrot Salad');
+const GoldenGarlicRice = require('./Golden Garlic Rice.json');
 const GrassfedHousemadeCornedBeefHash = require('./Grassfed Housemade Corned Beef Hash.json');
 const GreekZucchiniAnkaraWithMeatballsAndOptionalFetaCheese = require('./Greek Zucchini Ankara with Meatballs and Optional Feta Cheese.json');
 const ItalianSauteedSweetPepperSkillet = require('./Italian Sauteed Sweet Pepper Skillet (Optional Chicken Sausage).json');
@@ -12,17 +14,22 @@ const NourishingBlueberryLemonGranolaPaleo = require('./Nourishing Blueberry Lem
 const Polenta = require('./Polenta.json');
 const PurityOrganicCoffeeToxinFree = require('./Purity Organic Coffee (Toxin Free).json');
 const RedEnchiladaSauce = require('./Red Enchilada Sauce.json');
+const RefreshingCoconutBlackBeanStewwithLimeEnjoyWarmorChilled = require('./Refreshing Coconut Black Bean Stew with Lime (Enjoy Warm or Chilled).json');
 const SanctuaryHoneyChaiConcentrate = require('./Sanctuary Honey Chai Concentrate.json');
 const SilkyCoconutPannaCottawithPeachCompote = require('./Silky Coconut Panna Cotta with Peach Compote.json');
+const SummerRatatouilleWithOptionalSpicyGrassfedBeefSausage = require('./Summer Ratatouille with Optional Spicy Grassfed Beef Sausage.json');
 const TheBestTunaSaladwithPicklesandDill = require('./The Best Tuna Salad with Pickles and Dill.json');
+const VibrantThaiPorkandVeggies = require('./Vibrant Thai Pork and Veggies.json');
 
 const products: Product[] = [
   AsianStyleCodAndVegetableSoup,
   CabbageSlawLime,
+  CaramelizedOnionandWhiteBeanDip,
   CheesyBlackBeanTamalePie,
   Compote,
   CornedBeef,
   FreshBeetandCarrotSalad,
+  GoldenGarlicRice,
   GrassfedHousemadeCornedBeefHash,
   GreekZucchiniAnkaraWithMeatballsAndOptionalFetaCheese,
   ItalianSauteedSweetPepperSkillet,
@@ -31,9 +38,12 @@ const products: Product[] = [
   Polenta,
   PurityOrganicCoffeeToxinFree,
   RedEnchiladaSauce,
+  RefreshingCoconutBlackBeanStewwithLimeEnjoyWarmorChilled,
   SanctuaryHoneyChaiConcentrate,
   SilkyCoconutPannaCottawithPeachCompote,
+  SummerRatatouilleWithOptionalSpicyGrassfedBeefSausage,
   TheBestTunaSaladwithPicklesandDill,
+  VibrantThaiPorkandVeggies,
 ];
 
 export const instructionDefaults: { [key: string]: string } = {

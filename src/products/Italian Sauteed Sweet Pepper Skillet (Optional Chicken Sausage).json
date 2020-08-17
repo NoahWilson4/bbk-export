@@ -1,0 +1,12 @@
+{
+  "title": "Italian Sauteed Sweet Pepper Skillet (Optional Chicken Sausage)",
+  "label": {
+    "title": "Italian Sauteed Sweet Pepper Skillet",
+    "instructions": {
+      "default": "Heat in an oiled skillet over medium, stirring.",
+      "Frozen Pint": "Defrost. Heat in an oiled skillet over medium, stirring.",
+      "Frozen Pint / VEGGIE": "Defrost. Heat in an oiled skillet over medium, stirring.",
+      "Frozen Pint / Sausage": "Defrost. Heat in an oiled skillet over medium, stirring."
+    }
+  }
+}

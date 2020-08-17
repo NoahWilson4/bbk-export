@@ -30,10 +30,10 @@ export interface FetchedLineItem {
 export interface ShippingAddress {
   name: string;
   address1: string;
-  address2: string;
+  address2?: string;
   city: string;
   zip: string;
-  phone: string;
+  phone?: string;
 }
 
 export function isShippingAddress(data: any): data is ShippingAddress {
@@ -47,6 +47,7 @@ export interface OrderItemDetails {
   fulfillableQuantity: number;
   nonFulfillableQuantity: number;
   errors?: string[];
+  originalUnitPriceSet: { shopMoney: { amount: string } };
 }
 
 export function isOrderItemDetails(data: any): data is OrderItemDetails {
@@ -204,7 +205,7 @@ export function getOrdersByLocation(orders: Orders) {
     const locationName = order.tags[0];
     if (!locationName) continue;
 
-    const name = order.shippingAddress.name as string;
+    const name = order.shippingAddress.name;
 
     const locationData = _locationOrders[locationName] || {};
     const customerData: CustomerOrder = locationData[name] || {
@@ -221,4 +222,18 @@ export function getOrdersByLocation(orders: Orders) {
   }
 
   return _locationOrders;
+}
+
+export function getOrdersByCustomerName(orders: Orders, customerName: string) {
+  const customerOrders: Order[] = [];
+
+  for (const order of orders) {
+    const name = order.shippingAddress.name;
+
+    if (name.toLowerCase().trim() === customerName.toLowerCase().trim()) {
+      customerOrders.push(order);
+    }
+  }
+
+  return customerOrders;
 }

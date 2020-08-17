@@ -22,12 +22,18 @@ import { useOrders, Provider as OrderProvider } from './Context';
 import { Toolbar, AppBar } from '@material-ui/core';
 import Labels from './Labels';
 import Products from './Products';
+import Deliveries from './Deliveries';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       margin: 'auto',
       maxWidth: '55rem',
+    },
+    tabRoot: {
+      padding: `${theme.spacing(0.5)}px ${theme.spacing(2)}px`,
+      minWidth: 0,
+      minHeight: 0,
     },
     mr2: {
       marginRight: theme.spacing(2),
@@ -41,6 +47,7 @@ const useStyles = makeStyles((theme) =>
     },
     tabs: {
       margin: 'auto',
+      minHeight: 35,
     },
   })
 );
@@ -111,14 +118,16 @@ function BBKExport() {
         <Tabs
           value={tab}
           onChange={handleChange}
-          centered
+          // centered
           className={classes.tabs}
+          variant="scrollable"
         >
-          <Tab label="Overview" />
-          <Tab label="Locations" />
-          <Tab label="Orders" />
-          <Tab label="Labels" />
-          <Tab label="Products" />
+          <Tab className={classes.tabRoot} label="Overview" />
+          <Tab className={classes.tabRoot} label="Locations" />
+          <Tab className={classes.tabRoot} label="Orders" />
+          <Tab className={classes.tabRoot} label="Labels" />
+          <Tab className={classes.tabRoot} label="Deliveries" />
+          <Tab className={classes.tabRoot} label="Products" />
         </Tabs>
       </Toolbar>
       {workingOrders && tab === 0 ? <Totals orders={workingOrders} /> : null}
@@ -129,8 +138,11 @@ function BBKExport() {
         <LocationOrders orders={workingOrders} />
       ) : null}
       {workingOrders && tab === 3 ? <Labels orders={workingOrders} /> : null}
-      {tab === 4 ? <Products /> : null}
-      {tab !== 4 ? <Loading /> : null}
+      {workingOrders && tab === 4 ? (
+        <Deliveries orders={workingOrders} />
+      ) : null}
+      {tab === 5 ? <Products /> : null}
+      {tab !== 5 ? <Loading /> : null}
     </div>
   );
 }
