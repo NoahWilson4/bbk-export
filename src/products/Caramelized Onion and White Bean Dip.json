@@ -3,7 +3,8 @@
   "label": {
     "instructions": {
       "default": "Enjoy! Best within one week.",
-      "Frozen Pint": "Defrost. Enjoy."
+      "Frozen Pint": "Defrost. Enjoy.",
+      "Frozen Half Pint": "Defrost. Enjoy."
     }
   }
 }

@@ -28,6 +28,8 @@ export interface FetchedLineItem {
 }
 
 export interface ShippingAddress {
+  firstName: string;
+  lastName: string;
   name: string;
   address1: string;
   address2?: string;
@@ -76,14 +78,27 @@ export function isOrders(data: any): data is Orders {
 }
 
 export function isOrder(data: any): data is Order {
-  return (
-    data &&
-    typeof data === 'object' &&
-    data.id &&
-    isShippingAddress(data.shippingAddress) &&
-    data.tags &&
-    data.items
-  );
+  if (!data || typeof data !== 'object') {
+    throw 'Expecting an object of order data.';
+  }
+
+  if (!data.id) {
+    throw 'Order is missing an ID.';
+  }
+
+  if (!isShippingAddress(data.shippingAddress)) {
+    throw "The order's shipping data is not correct.";
+  }
+
+  if (!data.tags?.length) {
+    throw 'No location tags were provided.';
+  }
+
+  if (!data.items) {
+    throw 'This order has no items.';
+  }
+
+  return true;
 }
 
 export type ValidationErrors = Array<{ order: any; item?: any; error: string }>;
@@ -102,14 +117,20 @@ export function validateOrders(
   }
 
   for (const order of data) {
-    if (!isOrder(order)) {
+    let isValidOrder = false;
+
+    try {
+      isValidOrder = isOrder(order);
+    } catch (e) {
       isValid = false;
 
       errors.push({
         order,
-        error: 'Invalid order data.',
+        error: e || 'Invalid order data.',
       });
-    } else {
+    }
+
+    if (isValidOrder) {
       for (const item of order.items) {
         if (!isOrderItemDetails(item)) {
           isValid = false;
@@ -205,7 +226,7 @@ export function getOrdersByLocation(orders: Orders) {
     const locationName = order.tags[0];
     if (!locationName) continue;
 
-    const name = order.shippingAddress.name;
+    const name = getCustomerName(order);
 
     const locationData = _locationOrders[locationName] || {};
     const customerData: CustomerOrder = locationData[name] || {
@@ -236,4 +257,10 @@ export function getOrdersByCustomerName(orders: Orders, customerName: string) {
   }
 
   return customerOrders;
+}
+
+export function getCustomerName({
+  shippingAddress: { firstName, lastName },
+}: Order) {
+  return `${lastName}, ${firstName}`;
 }

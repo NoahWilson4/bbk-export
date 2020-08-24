@@ -8,6 +8,8 @@ import { Orders } from './utils';
 import classnames from 'classnames';
 
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import { Alert } from '@material-ui/lab';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -23,6 +25,7 @@ import { Toolbar, AppBar } from '@material-ui/core';
 import Labels from './Labels';
 import Products from './Products';
 import Deliveries from './Deliveries';
+import { ValidationErrorAlerts } from './ValidationErrors';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -63,7 +66,12 @@ export function App() {
 }
 
 function BBKExport() {
-  const { setWorkingOrders, workingOrders } = useOrders();
+  const {
+    setWorkingOrders,
+    workingOrders,
+    validationErrors,
+    errors,
+  } = useOrders();
 
   const [editing, setEditing] = React.useState(false);
   const toggleEdit = React.useCallback(() => setEditing((s) => !s), [
@@ -130,6 +138,17 @@ function BBKExport() {
           <Tab className={classes.tabRoot} label="Products" />
         </Tabs>
       </Toolbar>
+      {errors?.length ? (
+        <Box mb={3}>
+          {errors.map((e, i) => (
+            <Alert key={i} severity="error" variant="filled" elevation={4}>
+              {e}
+            </Alert>
+          ))}
+        </Box>
+      ) : null}
+      <br />
+      <ValidationErrorAlerts validationErrors={validationErrors} />
       {workingOrders && tab === 0 ? <Totals orders={workingOrders} /> : null}
       {workingOrders && tab === 1 ? (
         <LocationTotals orders={workingOrders} />

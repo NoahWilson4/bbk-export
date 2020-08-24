@@ -1,15 +1,10 @@
 import React from 'react';
 import { TotalsList } from './TotalsList';
 import { Section, SubSection } from './Section';
-import { getOrderTotals, validateOrders } from './utils';
-import { Typography, Box } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
-import { useOrders } from './Context';
-import { ValidationErrorAlerts } from './ValidationErrors';
+import { getOrderTotals } from './utils';
+import { Typography } from '@material-ui/core';
 
 export function Totals({ orders }: { orders: any }) {
-  const { errors, validationErrors } = useOrders();
-
   const orderItems = React.useMemo(() => getOrderTotals(orders), [orders]);
 
   const jars = React.useMemo(() => {
@@ -44,17 +39,6 @@ export function Totals({ orders }: { orders: any }) {
   return (
     <Section className="totals" header="Totals">
       <SubSection header={`Order Totals - ${orders.length} Orders`}>
-        {errors?.length ? (
-          <Box mb={3}>
-            {errors.map((e, i) => (
-              <Alert key={i} severity="error" variant="filled" elevation={4}>
-                {e}
-              </Alert>
-            ))}
-          </Box>
-        ) : null}
-        <ValidationErrorAlerts validationErrors={validationErrors} />
-        <br />
         <Typography variant="h6">
           Jars Needed <small>(Doesn't include frozen items)</small>
         </Typography>

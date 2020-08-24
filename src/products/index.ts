@@ -20,12 +20,17 @@ const SilkyCoconutPannaCottawithPeachCompote = require('./Silky Coconut Panna Co
 const SummerRatatouilleWithOptionalSpicyGrassfedBeefSausage = require('./Summer Ratatouille with Optional Spicy Grassfed Beef Sausage.json');
 const TheBestTunaSaladwithPicklesandDill = require('./The Best Tuna Salad with Pickles and Dill.json');
 const VibrantThaiPorkandVeggies = require('./Vibrant Thai Pork and Veggies.json');
+const BlueberryCashewCheesecakeTartsPaleo = require('./Blueberry Cashew Cheesecake Tarts (Paleo).json');
+const CitrusDillGarlicWildAlaskanCod = require('./Citrus, Dill & Garlic Wild Alaskan Cod.json');
+const RoastedSweetPepperSoupwithOptionalChickenBasilSausage = require('./Roasted Sweet Pepper Soup with Optional Chicken Basil Sausage.json');
 
 const products: Product[] = [
   AsianStyleCodAndVegetableSoup,
+  BlueberryCashewCheesecakeTartsPaleo,
   CabbageSlawLime,
   CaramelizedOnionandWhiteBeanDip,
   CheesyBlackBeanTamalePie,
+  CitrusDillGarlicWildAlaskanCod,
   Compote,
   CornedBeef,
   FreshBeetandCarrotSalad,
@@ -39,6 +44,7 @@ const products: Product[] = [
   PurityOrganicCoffeeToxinFree,
   RedEnchiladaSauce,
   RefreshingCoconutBlackBeanStewwithLimeEnjoyWarmorChilled,
+  RoastedSweetPepperSoupwithOptionalChickenBasilSausage,
   SanctuaryHoneyChaiConcentrate,
   SilkyCoconutPannaCottawithPeachCompote,
   SummerRatatouilleWithOptionalSpicyGrassfedBeefSausage,
@@ -66,8 +72,10 @@ export const instructionDefaults: { [key: string]: string } = {
     'Defrost or run under warm water. Slide out. Heat gently in a saucepan and enjoy.',
   'Frozen CHICKEN':
     'Defrost or run under warm water & slide out. Heat gently in a saucepan.',
-  'Frozen Burgers 4-Pack': 'Defrost and heat in an oiled skillet.',
-  'Frozen Four Burgers': 'Defrost and heat in an oiled skillet.',
+  'Frozen Burgers 4-Pack': 'Defrost then heat in an oiled skillet.',
+  'Frozen Four Pack': 'Defrost and heat in an oiled skillet.',
+  'Frozen 4 Pack': 'Defrost then heat in an oiled skillet.',
+  'Frozen Four Burgers': 'Defrost then heat in an oiled skillet.',
 };
 
 export interface ProductLabelInstructions {

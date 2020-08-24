@@ -9,7 +9,7 @@ export function LocationOrders({ orders }: { orders: Orders }) {
   }, [orders]);
 
   return (
-    <Section className="location-orders" header="Location Orders">
+    <Section className="location-orders">
       {Object.keys(locationOrders)
         .sort()
         .map((locationName) => {
@@ -28,7 +28,6 @@ export function LocationOrders({ orders }: { orders: Orders }) {
                     address1,
                     address2,
                     city,
-                    name,
                     phone,
                     zip,
                   } = customerOrder.shipping;
@@ -38,7 +37,9 @@ export function LocationOrders({ orders }: { orders: Orders }) {
                       key={customerName}
                       className="location-orders__customer"
                     >
-                      <h3 className="location-orders__customer-name">{name}</h3>
+                      <h3 className="location-orders__customer-name">
+                        {customerName}
+                      </h3>
                       {isDelivery ? (
                         <div className="location-orders__address">
                           <div>{address1}</div>

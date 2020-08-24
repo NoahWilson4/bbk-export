@@ -3,16 +3,6 @@ import { TotalsList } from './TotalsList';
 import { OrderMenuItems, Orders, getOrderItems } from './utils';
 import { Section, SubSection } from './Section';
 
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    mb2: {
-      marginBottom: theme.spacing(2),
-    },
-  })
-);
-
 interface LocationItems {
   [key: string]: OrderMenuItems;
 }

@@ -6,9 +6,11 @@ import { Orders, ValidationErrors } from './utils';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    errorData: {
-      fontSize: '0.85rem',
-      wordWrap: 'break-word',
+    cell: {
+      borderBottom: 'none',
+    },
+    root: {
+      marginBottom: theme.spacing(3),
     },
   })
 );
@@ -24,27 +26,45 @@ export function ValidationErrorAlerts({
     <>
       {validationErrors?.length
         ? validationErrors.map((e, i) => (
-            <Alert severity="error" elevation={4} key={i} variant="filled">
-              <Table>
+            <Alert
+              severity="error"
+              elevation={4}
+              key={i}
+              variant="filled"
+              className={classes.root}
+            >
+              <Table size="small">
                 <TableBody>
                   <TableRow>
-                    <TableCell>Error:</TableCell>
-                    <TableCell className={classes.errorData}>
-                      {e.error}
-                    </TableCell>
+                    <TableCell className={classes.cell}>Error:</TableCell>
+                    <TableCell className={classes.cell}>{e.error}</TableCell>
                   </TableRow>
                   {e.order ? (
-                    <TableRow>
-                      <TableCell>Order:</TableCell>
-                      <TableCell className={classes.errorData}>
-                        {JSON.stringify(e.order)}
-                      </TableCell>
-                    </TableRow>
+                    <>
+                      <TableRow>
+                        <TableCell className={classes.cell}>
+                          Order ID:
+                        </TableCell>
+                        <TableCell className={classes.cell}>
+                          {e.order.id || 'missing ID'}
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className={classes.cell}>
+                          Order Customer:
+                        </TableCell>
+                        <TableCell className={classes.cell}>
+                          {e.order.shippingAddress?.name || 'unkown'}
+                        </TableCell>
+                      </TableRow>
+                    </>
                   ) : null}
                   {e.item ? (
                     <TableRow>
-                      <TableCell>Item:</TableCell>
-                      <TableCell className={classes.errorData}>
+                      <TableCell className={classes.cell}>
+                        Errored Item:
+                      </TableCell>
+                      <TableCell className={classes.cell}>
                         {JSON.stringify(e.item)}
                       </TableCell>
                     </TableRow>

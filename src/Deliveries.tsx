@@ -2,7 +2,7 @@ import React from 'react';
 import { Orders, getOrdersByLocation, ShippingAddress } from './utils';
 import { Section, SubSection } from './Section';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { getPickupAddress } from './locations/index';
+import { getPickupAddress, LocationAddress } from './locations/index';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -65,7 +65,7 @@ export function Deliveries({ orders }: { orders: Orders }) {
 export function Address({
   shippingAddress,
 }: {
-  shippingAddress: ShippingAddress;
+  shippingAddress: ShippingAddress | LocationAddress;
 }) {
   return (
     <div>

@@ -1,6 +1,14 @@
 import { ShippingAddress } from '../utils';
 
-export const pickupLocations: ShippingAddress[] = [
+export interface LocationAddress {
+  name: string;
+  address1: string;
+  address2?: string;
+  city: string;
+  zip: string;
+}
+
+export const pickupLocations: LocationAddress[] = [
   {
     name: 'Broomfield Store Pick Up',
     address1: '1480 W Midway Blvd',
