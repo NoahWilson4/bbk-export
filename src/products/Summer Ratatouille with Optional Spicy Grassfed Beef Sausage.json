@@ -4,7 +4,9 @@
     "title": "Summer Ratatouille",
     "instructions": {
       "default": "Heat gently in a skillet, stirring occasionally.",
-      "Frozen Pint": "Defrost. Heat gently in a skillet, stirring occasionally."
+      "Frozen Pint": "Defrost. Heat gently in a skillet, stirring occasionally.",
+      "Frozen Pint / Beef": "Defrost. Heat gently in a skillet, stirring occasionally.",
+      "Frozen Pint / VEGGIE": "Defrost. Heat gently in a skillet, stirring occasionally."
     }
   }
 }

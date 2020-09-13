@@ -27,7 +27,7 @@ export function LocationTotals({ orders }: { orders: Orders }) {
   return (
     <Section className="locations" header="Location Totals">
       {Object.keys(locationItems)
-        .sort()
+        .sort(new Intl.Collator().compare)
         .map((locationName) => (
           <SubSection header={`${locationName} (Totals)`} key={locationName}>
             <TotalsList orderItems={locationItems[locationName]} />

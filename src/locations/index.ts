@@ -30,6 +30,13 @@ export const pickupLocations: LocationAddress[] = [
     city: 'Boulder',
     zip: '80301',
   },
+  {
+    name: 'Boulder Savory Spice Shop',
+    address1: '2041 Broadway #1',
+    address2: '',
+    city: 'Boulder',
+    zip: '80302',
+  },
 ];
 
 export function getPickupAddress(name: string) {

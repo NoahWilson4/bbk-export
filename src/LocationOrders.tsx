@@ -11,7 +11,7 @@ export function LocationOrders({ orders }: { orders: Orders }) {
   return (
     <Section className="location-orders">
       {Object.keys(locationOrders)
-        .sort()
+        .sort(new Intl.Collator().compare)
         .map((locationName) => {
           const locationOrder = locationOrders[locationName];
 
@@ -20,7 +20,7 @@ export function LocationOrders({ orders }: { orders: Orders }) {
           return (
             <SubSection header={locationName} key={locationName}>
               {Object.keys(locationOrder)
-                .sort()
+                .sort(new Intl.Collator().compare)
                 .map((customerName) => {
                   const customerOrder = locationOrder[customerName];
 

@@ -1,0 +1,12 @@
+{
+  "title": "Greek Zucchini Ankara with Feta Cheese and Optional Chicken Sausage",
+  "label": {
+    "title": "Zucchini Ankara with Feta Cheese",
+    "instructions": {
+      "default": "Heat in an oiled skillet over medium, stirring.",
+      "Frozen Pint": "Defrost. Heat in an oiled skillet over medium, stirring.",
+      "Frozen Pint / VEGGIE": "Defrost. Heat in an oiled skillet over medium, stirring.",
+      "Frozen Pint / Chicken Sausage": "Defrost. Heat in an oiled skillet over medium, stirring."
+    }
+  }
+}

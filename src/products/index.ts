@@ -23,23 +23,41 @@ const VibrantThaiPorkandVeggies = require('./Vibrant Thai Pork and Veggies.json'
 const BlueberryCashewCheesecakeTartsPaleo = require('./Blueberry Cashew Cheesecake Tarts (Paleo).json');
 const CitrusDillGarlicWildAlaskanCod = require('./Citrus, Dill & Garlic Wild Alaskan Cod.json');
 const RoastedSweetPepperSoupwithOptionalChickenBasilSausage = require('./Roasted Sweet Pepper Soup with Optional Chicken Basil Sausage.json');
+const WaldorfChickenSalad = require('./Waldorf Chicken Salad.json');
+const CreamyCapreseQuinoaBakewithOptionalChickenBasilSausage = require('./Creamy Caprese Quinoa Bake with Optional Chicken Basil Sausage.json');
+const OrganicRoastSweetPotatoWedges = require('./Organic Roast Sweet Potato Wedges.json');
+const SmokedPaprikaAioli = require('./Smoked Paprika Aioli.json');
+const FlavorfulFreshCarrotSalad = require('./Flavorful Fresh Carrot Salad.json');
+const GrassfedBeefPorkMeatloafwithTomatoMustardGlaze = require('./Grassfed Beef & Pork Meatloaf with Tomato Mustard Glaze.json');
+const GreekZucchiniAnkarawithFetaCheeseandOptionalChickenSausage = require('./Greek Zucchini Ankara with Feta Cheese and Optional Chicken Sausage.json');
+const SummerMinestronewithHousemadeItalianSausage = require('./Summer Minestrone with Housemade Italian Sausage.json');
+const VersatileLemonCurdDairyFreeSugarFree = require('./Versatile Lemon Curd (Dairy Free & Sugar Free).json');
+const SummerQuinoaPilafwithLemonandHerbs = require('./Summer Quinoa Pilaf with Lemon and Herbs.json');
+const SoTastyBeetHummusPaleo = require('./So Tasty Beet Hummus (Paleo).json');
+const CauliflowerFriedRicewithLocalPork = require('./Cauliflower Fried Rice with Local Pork (Paleo).json');
 
 const products: Product[] = [
   AsianStyleCodAndVegetableSoup,
   BlueberryCashewCheesecakeTartsPaleo,
   CabbageSlawLime,
   CaramelizedOnionandWhiteBeanDip,
+  CauliflowerFriedRicewithLocalPork,
   CheesyBlackBeanTamalePie,
   CitrusDillGarlicWildAlaskanCod,
   Compote,
   CornedBeef,
+  CreamyCapreseQuinoaBakewithOptionalChickenBasilSausage,
   FreshBeetandCarrotSalad,
+  FlavorfulFreshCarrotSalad,
   GoldenGarlicRice,
+  GrassfedBeefPorkMeatloafwithTomatoMustardGlaze,
   GrassfedHousemadeCornedBeefHash,
+  GreekZucchiniAnkarawithFetaCheeseandOptionalChickenSausage,
   GreekZucchiniAnkaraWithMeatballsAndOptionalFetaCheese,
   ItalianSauteedSweetPepperSkillet,
   MustardAndRosemaryTurkeyBurgers,
   NourishingBlueberryLemonGranolaPaleo,
+  OrganicRoastSweetPotatoWedges,
   Polenta,
   PurityOrganicCoffeeToxinFree,
   RedEnchiladaSauce,
@@ -47,19 +65,30 @@ const products: Product[] = [
   RoastedSweetPepperSoupwithOptionalChickenBasilSausage,
   SanctuaryHoneyChaiConcentrate,
   SilkyCoconutPannaCottawithPeachCompote,
+  SmokedPaprikaAioli,
+  SoTastyBeetHummusPaleo,
+  SummerMinestronewithHousemadeItalianSausage,
   SummerRatatouilleWithOptionalSpicyGrassfedBeefSausage,
+  SummerQuinoaPilafwithLemonandHerbs,
   TheBestTunaSaladwithPicklesandDill,
+  VersatileLemonCurdDairyFreeSugarFree,
   VibrantThaiPorkandVeggies,
+  WaldorfChickenSalad,
 ];
 
 export const instructionDefaults: { [key: string]: string } = {
   default: 'Heat gently in a saucepan and enjoy.',
   'Frozen Tin': 'Defrost. Bake at 350 for 15 min or until warm.',
   'One Tin': 'Bake at 350 for 15 min or until warm.',
+  'One Tin / With Cheese': 'Bake at 350 for 15 min or until warm.',
+  'One Tin / Dairy Free': 'Bake at 350 for 15 min or until warm.',
+  'One Loaf': 'Bake at 350 for 15 min or until warm.',
   'Four Cupcakes': 'Enjoy within 2 days or freeze.',
   'Four Muffins': 'Enjoy within 2 days or freeze.',
   'Half Dozen': 'Enjoy within 2 days or freeze.',
   'One Dozen': 'Enjoy within 2 days or freeze.',
+  Half: 'Bake at 350 for 10-15 min or until warm.',
+  Full: 'Bake at 350 for 10-15 min or until warm.',
   Dozen: 'Enjoy within 2 days or freeze.',
   'Frozen Pint':
     'Defrost or run under warm water. Slide out. Heat gently in a saucepan and enjoy.',

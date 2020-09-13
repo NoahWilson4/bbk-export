@@ -1,0 +1,12 @@
+{
+  "title": "Creamy Caprese Quinoa Bake with Optional Chicken Basil Sausage",
+  "label": {
+    "title": "Creamy Caprese Quinoa Bake",
+    "instructions": {
+      "default": "Bake uncovered at 350 for 10 min or until warm.",
+      "Frozen Tin": "Defrost. Bake uncovered at 350 for 10 min or until warm.",
+      "Frozen Tin / Veggie": "Defrost. Bake uncovered at 350 for 10 min or until warm.",
+      "Frozen Tin / Chicken Sausage": "Defrost. Bake uncovered at 350 for 10 min or until warm."
+    }
+  }
+}

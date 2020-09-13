@@ -131,7 +131,9 @@ export async function createLabels(
 
     const menuItems = getOrderTotals(orders);
 
-    for (const title of Object.keys(menuItems).sort()) {
+    for (const title of Object.keys(menuItems).sort(
+      new Intl.Collator().compare
+    )) {
       const { variants } = menuItems[title];
 
       const product = products.find((p) => p.title === title);
@@ -163,10 +165,14 @@ export async function createLabels(
 
     const ordersByLocation = getOrdersByLocation(orders);
 
-    for (const locationTitle of Object.keys(ordersByLocation).sort()) {
+    for (const locationTitle of Object.keys(ordersByLocation).sort(
+      new Intl.Collator().compare
+    )) {
       const location = ordersByLocation[locationTitle];
 
-      for (const customerName of Object.keys(location).sort()) {
+      for (const customerName of Object.keys(location).sort(
+        new Intl.Collator().compare
+      )) {
         const customerOrder = location[customerName];
 
         drawCustomerLabel(

@@ -19,7 +19,7 @@ export function TotalsList({ orderItems }: { orderItems: OrderMenuItems }) {
   return (
     <div className="totals-list">
       {Object.keys(orderItems)
-        .sort()
+        .sort(new Intl.Collator().compare)
         .map((orderItemTitle: string) => {
           const orderItem = orderItems[orderItemTitle];
 
@@ -36,7 +36,7 @@ export function TotalsListItem({ orderItem }: { orderItem: OrderMenuItem }) {
       <div className="totals-list__item-title">{orderItem.title}</div>
       <ul>
         {Object.keys(orderItem.variants)
-          .sort()
+          .sort(new Intl.Collator().compare)
           .map((variantTitle: string) => {
             const variant = orderItem.variants[variantTitle];
             return (

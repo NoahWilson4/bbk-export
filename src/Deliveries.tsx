@@ -22,7 +22,7 @@ export function Deliveries({ orders }: { orders: Orders }) {
   return (
     <Section className="deliveries" header="Deliveries">
       {Object.keys(ordersByLocation)
-        .sort()
+        .sort(new Intl.Collator().compare)
         .map((locationName) => {
           const locationOrders = ordersByLocation[locationName];
 
@@ -39,15 +39,19 @@ export function Deliveries({ orders }: { orders: Orders }) {
             >
               {isDelivery ? (
                 Object.keys(locationOrders)
-                  .sort()
+                  .sort(new Intl.Collator().compare)
                   .map((customerName) => {
                     const order = locationOrders[customerName];
 
                     return (
-                      <Address
-                        key={customerName}
-                        shippingAddress={order.shipping}
-                      />
+                      <>
+                        <Address
+                          key={customerName}
+                          shippingAddress={order.shipping}
+                          name
+                          phone
+                        />
+                      </>
                     );
                   })
               ) : pickupAddress ? (
@@ -62,16 +66,52 @@ export function Deliveries({ orders }: { orders: Orders }) {
   );
 }
 
+const useAddresStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    addresses: {
+      width: '50%',
+    },
+    names: {
+      marginLeft: theme.spacing(1),
+      flexGrow: 1,
+    },
+    phones: {
+      marginLeft: theme.spacing(1),
+      width: '10rem',
+    },
+  })
+);
+
 export function Address({
   shippingAddress,
+  name,
+  phone,
 }: {
-  shippingAddress: ShippingAddress | LocationAddress;
+  shippingAddress: Partial<ShippingAddress>;
+  name?: boolean;
+  phone?: boolean;
 }) {
+  const classes = useAddresStyles();
+
   return (
-    <div>
-      {`${shippingAddress.address1} ${
-        shippingAddress.address2 ? shippingAddress.address2 : ''
-      } ${shippingAddress.city} ${shippingAddress.zip}`}
+    <div className={classes.root}>
+      <span className={classes.addresses}>
+        {`${shippingAddress.address1} ${
+          shippingAddress.address2 ? shippingAddress.address2 : ''
+        } ${shippingAddress.city} ${shippingAddress.zip}`}
+      </span>
+      {name ? (
+        <span
+          className={classes.names}
+        >{`  ${shippingAddress.lastName}, ${shippingAddress.firstName}`}</span>
+      ) : null}
+      {phone ? (
+        <span className={classes.phones}>{` ${shippingAddress.phone}`}</span>
+      ) : null}
     </div>
   );
 }
