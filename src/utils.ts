@@ -1,3 +1,5 @@
+import { getLocationFromTags } from './locations';
+
 export interface FetchedOrders {
   orders: {
     edges: Array<{ node: FetchedOrder }>;
@@ -10,6 +12,7 @@ export interface FetchedOrder {
   note: string;
   shippingAddress: ShippingAddress;
   tags: string[];
+  email: string;
 }
 
 export function isFetchedOrder(data: any): data is FetchedOrder {
@@ -57,7 +60,7 @@ export function isOrderItemDetails(data: any): data is OrderItemDetails {
     data &&
     typeof data === 'object' &&
     data.title &&
-    data.variantTitle &&
+    typeof data.variantTitle === 'string' &&
     typeof data.quantity === 'number' &&
     typeof data.fulfillableQuantity === 'number' &&
     typeof data.nonFulfillableQuantity === 'number'
@@ -71,6 +74,7 @@ export interface Order {
   tags: string[];
   items: OrderItemDetails[];
   note: string;
+  email: string;
 }
 
 export function isOrders(data: any): data is Orders {
@@ -79,22 +83,32 @@ export function isOrders(data: any): data is Orders {
 
 export function isOrder(data: any): data is Order {
   if (!data || typeof data !== 'object') {
+    console.warn('Expecting an object of order data.', data);
     throw 'Expecting an object of order data.';
   }
 
   if (!data.id) {
+    console.warn('Order is missing an ID.', data);
     throw 'Order is missing an ID.';
   }
 
   if (!isShippingAddress(data.shippingAddress)) {
+    console.warn("The order's shipping data is not correct.", data);
     throw "The order's shipping data is not correct.";
   }
 
   if (!data.tags?.length) {
+    console.warn('No location tags were provided.', data);
     throw 'No location tags were provided.';
   }
 
+  if (!getLocationFromTags(data.tags)) {
+    console.warn('No matching tag for delivery/pickup location found.', data);
+    throw 'No matching tag for delivery/pickup location found.';
+  }
+
   if (!data.items) {
+    console.warn('This order has no items.', data);
     throw 'This order has no items.';
   }
 
@@ -208,6 +222,7 @@ export function getOrderTotals(orders: Orders) {
 export interface CustomerOrder {
   items: OrderMenuItems;
   shipping: ShippingAddress;
+  email: string;
   note?: string;
 }
 
@@ -223,7 +238,7 @@ export function getOrdersByLocation(orders: Orders) {
   const _locationOrders: LocationOrders = {};
 
   for (const order of orders) {
-    const locationName = order.tags[0];
+    const locationName = getLocationFromTags(order.tags)?.name;
     if (!locationName) continue;
 
     const name = getCustomerName(order);
@@ -233,6 +248,7 @@ export function getOrdersByLocation(orders: Orders) {
       shipping: order.shippingAddress,
       items: {},
       note: order.note,
+      email: order.email
     };
 
     customerData.items = getOrderItems(order, customerData.items);

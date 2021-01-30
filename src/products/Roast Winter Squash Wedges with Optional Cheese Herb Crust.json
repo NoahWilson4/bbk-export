@@ -1,0 +1,12 @@
+{
+  "title": "Roast Winter Squash Wedges with Optional Cheese Herb Crust",
+  "label": {
+    "title": "Roast Winter Squash Wedges",
+    "instructions": {
+      "default": "Bake on a sheet at 350 for 10 min or until warm. For more color, bake longer.",
+      "Frozen Pint": "Defrost. Bake at 350 for 10 min or until warm. For more color, bake longer.",
+      "Frozen Pint / VEGAN": "Defrost. Bake at 350 for 10 min or until warm. For more color, bake longer.",
+      "Frozen Pint / Cheese": "Defrost. Bake at 350 for 10 min or until warm. For more color, bake longer."
+    }
+  }
+}

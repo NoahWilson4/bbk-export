@@ -1,0 +1,12 @@
+{
+  "title": "Mediterranean Spaghetti Squash Bake (Optional Cheese and Beef Sausage)",
+  "label": {
+    "title": "Mediterranean Spaghetti Squash Bake (Optional Chz / Beef)",
+    "instructions": {
+      "default": "Bake at 350 for 10 min or until warm.",
+      "Frozen Tin / Cheese / Sausage": "Defrost. Bake at 350 for 15 min or until warm.",
+      "Frozen Tin / Cheese / Vegetarian": "Defrost. Bake at 350 for 15 min or until warm.",
+      "Frozen Tin / Dairy Free / VEGAN": "Defrost. Bake at 350 for 10-15 min or until warm."
+    }
+  }
+}

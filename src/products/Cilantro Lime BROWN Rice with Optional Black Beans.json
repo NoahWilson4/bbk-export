@@ -1,0 +1,12 @@
+{
+    "title": "Cilantro Lime BROWN Rice with Optional Black Beans",
+    "label": {
+      "title": "Cilantro Lime BROWN Rice",
+      "instructions": {
+        "default": "Heat gently in a pan with a splash of water or stock to steam.",
+        "Frozen Pint": "Defrost. Heat gently in a pan with a splash of water or stock to steam.",
+        "Frozen Pint / NO": "Defrost. Heat gently in a pan with a splash of water or stock to steam.",
+        "Frozen Pint / Beans": "Defrost. Heat gently in a pan with a splash of water or stock to steam."
+      }
+    }
+  }

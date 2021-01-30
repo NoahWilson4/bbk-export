@@ -2,7 +2,7 @@ import React from 'react';
 import { Orders, getOrdersByLocation, ShippingAddress } from './utils';
 import { Section, SubSection } from './Section';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { getPickupAddress, LocationAddress } from './locations/index';
+import { getPickupAddress } from './locations/index';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -20,49 +20,80 @@ export function Deliveries({ orders }: { orders: Orders }) {
   }, [orders]);
 
   return (
-    <Section className="deliveries" header="Deliveries">
-      {Object.keys(ordersByLocation)
-        .sort(new Intl.Collator().compare)
-        .map((locationName) => {
-          const locationOrders = ordersByLocation[locationName];
+    <>
+      <Section className="deliveries" header="Deliveries">
+        {Object.keys(ordersByLocation)
+          .sort(new Intl.Collator().compare)
+          .map((locationName) => {
+            const locationOrders = ordersByLocation[locationName];
 
-          const isDelivery = locationName.toLowerCase().includes('delivery');
-          const pickupAddress = !isDelivery
-            ? getPickupAddress(locationName)
-            : undefined;
+            const isDelivery = locationName.toLowerCase().includes('delivery');
+            const pickupAddress = !isDelivery
+              ? getPickupAddress(locationName)
+              : undefined;
 
-          return (
-            <SubSection
-              key={locationName}
-              header={locationName}
-              className={classes.mb3}
-            >
-              {isDelivery ? (
-                Object.keys(locationOrders)
-                  .sort(new Intl.Collator().compare)
-                  .map((customerName) => {
-                    const order = locationOrders[customerName];
+            return (
+              <SubSection
+                key={locationName}
+                header={locationName}
+                className={classes.mb3}
+              >
+                {isDelivery ? (
+                  Object.keys(locationOrders)
+                    .sort(new Intl.Collator().compare)
+                    .map((customerName, i) => {
+                      const order = locationOrders[customerName];
 
-                    return (
-                      <>
-                        <Address
-                          key={customerName}
-                          shippingAddress={order.shipping}
-                          name
-                          phone
-                        />
-                      </>
-                    );
-                  })
-              ) : pickupAddress ? (
-                <Address shippingAddress={pickupAddress} />
-              ) : (
-                <div>This location is missing an address.</div>
-              )}
-            </SubSection>
-          );
-        })}
-    </Section>
+                      return (
+                        <>
+                          <Address
+                            key={`${customerName}--${i}`}
+                            shippingAddress={order.shipping}
+                            name
+                            phone
+                          />
+                        </>
+                      );
+                    })
+                ) : pickupAddress ? (
+                  <Address shippingAddress={pickupAddress} />
+                ) : (
+                  <div>This location is missing an address.</div>
+                )}
+              </SubSection>
+            );
+          })}
+      </Section>
+      <Section header="Delivery Spreadsheet">
+        <div>
+          dest_first_name,dest_last_name,dest_phone_number,dest_email,dest_address_line_1,dest_address_line_2,dest_city,dest_state,dest_zip,,,,,,,dest_remarks
+        </div>
+        {Object.keys(ordersByLocation)
+          .filter((locationName) =>
+            locationName.toLowerCase().includes('delivery')
+          )
+          .sort(new Intl.Collator().compare)
+          .map((locationName) => {
+            const locationOrders = ordersByLocation[locationName];
+
+            return Object.keys(locationOrders)
+              .sort(new Intl.Collator().compare)
+              .map((customerName, i) => {
+                const order = locationOrders[customerName];
+
+                return (
+                  <div key={`${customerName}--${i}`}>
+                    {order.shipping.firstName},{order.shipping.lastName},
+                    {order.shipping.phone},{order.email},
+                    {order.shipping.address1},{order.shipping.address2},
+                    {order.shipping.city},CO,{order.shipping.zip},,,,,,,
+                    {order.note}
+                  </div>
+                );
+              });
+          })}
+      </Section>
+    </>
   );
 }
 

@@ -1,0 +1,13 @@
+{
+    "title": "Latin Style Cabbage Slaw with Optional Feta",
+    "label": {
+      "instructions": {
+        "default": "Enjoy cold or saute in an oiled as a veggie saute.",
+        "Pint / NO": "Enjoy cold or saute in an oiled as a veggie saute.",
+        "Pint / Cheese": "Enjoy cold or saute in an oiled as a veggie saute.",
+        "Frozen Pint / NO": "Defrost. Best sauteed in an oiled skillet.",
+        "Frozen Pint / Cheese": "Defrost. Best sauteed in an oiled skillet."
+        
+      }
+    }
+  }

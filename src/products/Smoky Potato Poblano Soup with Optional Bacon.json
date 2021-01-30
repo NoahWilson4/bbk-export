@@ -1,0 +1,12 @@
+{
+  "title": "Smoky Potato Poblano Soup with Optional Bacon",
+  "label": {
+    "title": "Smoky Potato Poblano Soup",
+    "instructions": {
+      "default": "Heat gently in a saucepan, stirring.",
+      "Frozen Pint": "Defrost or run under warm water to slide out. Heat gently in a saucepan, stirring.",
+      "Frozen Pint / Vegan": "Defrost or run under warm water to slide out. Heat gently in a saucepan, stirring.",
+      "Frozen Pint / Bacon": "Defrost or run under warm water to slide out. Heat gently in a saucepan, stirring."
+    }
+  }
+}
