@@ -134,6 +134,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
 
           for (const { node } of lineItems) {
             if (!isOrderItemDetails(node)) {
+              console.log('invalid item', node);
               continue;
             }
 

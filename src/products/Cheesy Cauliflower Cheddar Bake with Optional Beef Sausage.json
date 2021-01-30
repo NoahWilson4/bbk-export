@@ -1,0 +1,12 @@
+{
+    "title": "Cheesy Cauliflower Cheddar Bake with Optional Beef Sausage",
+    "label": {
+      "title": "Cheesy Cauliflower Cheddar Bake",
+      "instructions": {
+        "default": "Bake uncovered at 350 for 10 min or until warm.",
+        "Frozen Tin": "Defrost. Bake uncovered at 350 for 10 min or until warm.",
+        "Frozen Tin / Vegetarian": "Defrost. Bake uncovered at 350 for 10 min or until warm.",
+        "Frozen Tin / Sausage": "Defrost. Bake uncovered at 350 for 10 min or until warm."
+      }
+    }
+  }

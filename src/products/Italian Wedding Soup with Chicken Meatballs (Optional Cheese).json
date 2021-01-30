@@ -1,0 +1,12 @@
+{
+  "title": "Italian Wedding Soup with Chicken Meatballs (Optional Cheese)",
+  "label": {
+    "title": "Italian Wedding Soup with Chicken Meatballs",
+    "instructions": {
+      "default": "Heat gently in a sauce pan.",
+      "Frozen Pint": "Defrost. Heat gently in a sauce pan.",  
+      "Frozen Pint / Dairy Free": "Defrost. Heat gently in a sauce pan.",
+      "Frozen Pint / Cheese": "Defrost. Heat gently in a sauce pan."
+    }
+  }
+}
