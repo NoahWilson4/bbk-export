@@ -13,7 +13,7 @@ import {
 } from './utils';
 
 async function getExport() {
-  const res = await fetch('/export');
+  const res = await fetch('/api/orders');
   const data = await res.json();
 
   return JSON.parse(data);
@@ -21,7 +21,7 @@ async function getExport() {
 
 async function getOrderLineItems(id: string) {
   const _id = id.substring(id.lastIndexOf('/') + 1);
-  const res = await fetch(`/export/order/${_id}/line-items`);
+  const res = await fetch(`/api/order/${_id}/line-items`);
   const data = await res.json();
   return JSON.parse(data);
 }
@@ -56,9 +56,10 @@ export function Provider({ children }: { children: React.ReactNode }) {
   const [total, setTotal] = React.useState(0);
   const [count, setCount] = React.useState(0);
   const [workingOrders, setWorkingOrders] = React.useState<Orders>();
-  const [validationErrors, setValidationErrors] = React.useState<
-    ValidationErrors
-  >();
+  const [
+    validationErrors,
+    setValidationErrors,
+  ] = React.useState<ValidationErrors>();
 
   const refreshOrders = React.useCallback(async () => {
     setValidationErrors(undefined);
